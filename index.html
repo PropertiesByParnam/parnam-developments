@@ -589,6 +589,35 @@ select.af-inp option{background:#0f1550;color:#fff;}
 @keyframes spinr{to{transform:rotate(360deg);}}
 .imp-prev-btn{width:100%;padding:12px;border-radius:10px;background:var(--gold);color:#fff;font-family:'Jost',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border:none;margin-top:14px;}
 
+/* ── PHOTO GALLERY ── */
+.gallery-wrap{position:relative;width:100%;height:240px;border-radius:var(--radius-sm);overflow:hidden;margin-bottom:22px;background:#0a0f30;}
+.gallery-track{display:flex;height:100%;transition:transform .4s cubic-bezier(.22,1,.36,1);will-change:transform;}
+.gallery-slide{flex-shrink:0;width:100%;height:100%;}
+.gallery-slide img{width:100%;height:100%;object-fit:cover;display:block;}
+.gallery-slide-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:linear-gradient(160deg,rgba(201,149,106,.08),rgba(13,18,69,.7));}
+.gallery-ph-icon{font-size:48px;opacity:.35;}
+.gallery-ph-text{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:rgba(201,149,106,.2);}
+.gallery-prev,.gallery-next{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:10;-webkit-tap-highlight-color:transparent;}
+.gallery-prev{left:10px;}.gallery-next{right:10px;}
+.gallery-prev:hover,.gallery-next:hover{background:rgba(201,149,106,.7);border-color:var(--gold);}
+.gallery-prev:active,.gallery-next:active{transform:translateY(-50%) scale(.92);}
+.gallery-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:10;}
+.gallery-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:all .25s;border:none;padding:0;}
+.gallery-dot.active{background:#fff;transform:scale(1.2);}
+.gallery-counter{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);color:rgba(255,255,255,.8);font-size:12px;padding:4px 10px;border-radius:100px;z-index:10;font-family:'Jost',sans-serif;}
+.gallery-fullscreen{position:absolute;top:10px;left:10px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:10;}
+.gallery-fullscreen:hover{background:rgba(201,149,106,.7);}
+
+/* Fullscreen lightbox */
+.lightbox{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;}
+.lightbox.open{display:flex;}
+.lightbox-img{max-width:92vw;max-height:88vh;object-fit:contain;border-radius:8px;}
+.lightbox-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);border:none;color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.lightbox-prev,.lightbox-next{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.lightbox-prev{left:16px;}.lightbox-next{right:16px;}
+.lightbox-prev:hover,.lightbox-next:hover{background:rgba(201,149,106,.6);}
+.lightbox-counter{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.6);font-size:13px;font-family:'Jost',sans-serif;}
+
 </style>
 </head>
 <body>
@@ -854,62 +883,62 @@ const DATA = [
    highlights:['Private Hard Hat Tours now booking — walk real finishes in person','78% sold — only select homes remain','Refined pricing with flexible tailored offers for early purchasers','Estimated completion January 2027'],
    desc:'Hard hat tours are now available to walk real finishes. 78% sold with only select homes remaining. Estimated completion January 2027.',
    cname:'Pavel Stepczynski · Rennie',phone:'778-858-0809',email:'pstepczynski@rennie.com',
-   hrs:'By appointment',date:'2026-04-04',color:'charcoal',images:['images/portwood.jpg']},
+   hrs:'By appointment',date:'2026-04-04',color:'charcoal',images:['images/portwood/main.jpg','images/portwood/interior1.jpg','images/portwood/interior2.jpg']},
   {id:'lakecountry',name:'Lake Country Villas',dev:'Royal LePage Kelowna',city:'Lake Country (Okanagan)',region:'Okanagan',
    price:'Call for pricing',pwas:'',psave:'',sold:82,type:'Villa',beds:'3–4 Bed',
    status:'move-in',badge:'⚡ Last 1 Villa',comp:'Move-In Ready',gst:'',dep:'',
    highlights:['Panoramic Okanagan Lake views from private deck','Quartz countertops · Bosch appliances · Smart tech throughout','Central A/C · HRV · Dual-zone heating','Minutes to wineries, beaches & Kelowna Airport','Only ONE move-in ready villa remains — presale also available'],
    desc:'Stunning villas overlooking Okanagan Lake. The last move-in ready unit features premium finishes throughout and sweeping lake views.',
    cname:'Brett Johnston',phone:'250-863-5399',email:'info@lakecountryvillas.ca',web:'https://lakecountryvillas.ca',
-   hrs:'Private appointments',date:'2026-04-04',color:'gold',images:['images/lakecountry.jpg']},
+   hrs:'Private appointments',date:'2026-04-04',color:'gold',images:['images/lakecountry/main.jpg','images/lakecountry/view.jpg','images/lakecountry/interior.jpg']},
   {id:'parkave',name:'Park Avenue',dev:'Apcon Group · Novus Real Estate',city:'Yorkson, Langley',region:'Langley',
    price:'$889,900 + GST',pwas:'',psave:'',sold:0,type:'Townhome',beds:'3 Bed / 3 Bed + Den',
    status:'move-in',badge:'Selling Fast',comp:'Move-In Ready',gst:'',dep:'5% deposit',
    highlights:['32 rooftop townhomes · 500+ sq ft rooftop patios','A/C + EV charger included · Fisher & Paykel appliances','Gas fireplace in every home · Side-by-side double garages','Show home open Sat & Sun 1–4 PM'],
    desc:'Move-in ready rooftop townhomes in Langley\'s Yorkson neighbourhood. Features premium appliances and spacious private rooftop patios.',
    cname:'Park Avenue Sales Team',email:'info@novusrealestate.ca',web:'https://apcongroup.ca/park-ave/',
-   hrs:'Sat & Sun 1–4 PM',date:'2026-04-03',color:'green',images:['images/parkave.jpg']},
+   hrs:'Sat & Sun 1–4 PM',date:'2026-04-03',color:'green',images:['images/parkave/main.jpg','images/parkave/rooftop.jpg','images/parkave/kitchen.jpg','images/parkave/bedroom.jpg']},
   {id:'pierwest',name:'Pier West',dev:'Bosa Development · Rennie',city:'New Westminster',region:'New Westminster',
    price:'From $593,900',pwas:'From $669,900',psave:'Up to $99K Off',sold:0,type:'Condo',beds:'1–3 Bed',
    status:'move-in',badge:'Spring Sale',comp:'Move-In Ready',gst:'partial',dep:'',depBonus:'$5K on 1-bed · $10K on 2&3-bed',
    highlights:['West Tower 1-bed from $595,900 (was $692,900)','East Tower 1-bed from $593,900 (was $669,900)','2-bed & 3-bed spring pricing available','Commission paid immediately on completed homes'],
    desc:'Spring sale pricing in effect. Move-in ready condos in New Westminster with Quayside waterfront location.',
    cname:'Laura Benitez · Rennie',phone:'778-858-0809',email:'lbenitez@rennie.com',web:'https://pier-west.com',
-   hrs:'Sat–Thu 12–5 PM',date:'2026-03-25',color:'blue',images:['images/pierwest.jpg']},
+   hrs:'Sat–Thu 12–5 PM',date:'2026-03-25',color:'blue',images:['images/pierwest/main.jpg','images/pierwest/view.jpg','images/pierwest/lobby.jpg']},
   {id:'kinsley',name:'Kinsley',dev:'Intergulf Development',city:'Vancouver West Side',region:'Vancouver',
    price:'From $694,900',pwas:'',psave:'',sold:0,type:'Condo',beds:'',
    status:'move-in',badge:'',comp:'Move-In Ready',gst:'',dep:'',
    highlights:['Move-in ready condos on coveted Vancouver West Side','Skip the pre-construction wait — brand-new living now','W 28th Ave & Yukon — central and well-connected'],
    desc:'Brand-new move-in ready condos on the Vancouver West Side. Modern living at W 28th & Yukon.',
    cname:'Kinsley Sales Team',email:'kinsley@intergulf.com',
-   hrs:'By appointment',date:'2026-03-26',color:'green',images:['images/kinsley.jpg']},
+   hrs:'By appointment',date:'2026-03-26',color:'green',images:['images/kinsley/main.jpg','images/kinsley/interior.jpg']},
   {id:'onyxivory',name:'Onyx & Ivory',dev:'',city:'Surrey',region:'Surrey',
    price:'From $969,900',pwas:'From $1,119,900',psave:'$150K OFF',sold:0,type:'Townhome',beds:'3 Bed + Flex',
    status:'move-in',badge:'GST Rebate',comp:'Move-In Ready',gst:'full',dep:'',
    highlights:['~1,900 sq ft · Walk-out balcony · Gas BBQ · Built-in speakers','10–15% OFF + NO strata fees for 3 years (Phase One)','Fisher & Paykel appliances · Quartz double-waterfall islands','Central A/C · EV outlet · Double side-by-side garage','Phase Two presale now open'],
    desc:'Phase One offers 10–15% off with no strata fees for 3 years. Premium townhomes in Surrey with high-end finishes throughout.',
    cname:'Onyx & Ivory Sales Team',phone:'778-858-0809',email:'sales@onyxivory.ca',web:'https://onyxivory.ca',
-   hrs:'Daily 12–5 PM (exc. Fri)',date:'2026-03-18',color:'terra',images:['images/onyxivory.jpg']},
+   hrs:'Daily 12–5 PM (exc. Fri)',date:'2026-03-18',color:'terra',images:['images/onyxivory/main.jpg','images/onyxivory/kitchen.jpg','images/onyxivory/balcony.jpg','images/onyxivory/bedroom.jpg']},
   {id:'mercer',name:'Mercer Village',dev:'',city:'Metro Vancouver (15 min to Van.)',region:'Surrey',
    price:'From mid-$900Ks',pwas:'',psave:'5% OFF + GST',sold:0,type:'Townhome',beds:'3 Bed / 3 Bed + Den',
    status:'move-in',badge:'Final 5 Homes',comp:'Move-In Ready',gst:'full',dep:'5% deposit',
    highlights:['5-5-5 Promo: 5% off · 5% deposit · Limited time offer','All homes qualify for up to $50K GST rebate (Bill C-4)','KitchenAid appliances · Gas cooktop · 36" fridge · 11" island','Central A/C · 2-car garage + Level 2 EV outlet','Community park · play area · dog run · ~$0.22 PSF strata'],
    desc:'Only 5 homes remain. 5-5-5 Promo: 5% discount, 5% deposit. Eligible for the full $50K GST rebate.',
    cname:'Mercer Village Sales',phone:'778-858-0809',email:'sales@mercervillage.ca',web:'https://mercervillage.ca',
-   hrs:'Daily 12–5 PM (exc. Fri)',date:'2026-03-04',color:'gold',images:['images/mercer.jpg']},
+   hrs:'Daily 12–5 PM (exc. Fri)',date:'2026-03-04',color:'gold',images:['images/mercer/main.jpg','images/mercer/kitchen.jpg','images/mercer/garage.jpg']},
   {id:'blacktail',name:'Blacktail',dev:'Private Developer',city:'Silver Valley, Maple Ridge',region:'Maple Ridge',
    price:'From $999,000',pwas:'',psave:'',sold:0,type:'Mixed',beds:'3–4 Bed',
    status:'presale',badge:'Grand Opening May 23',comp:'May 2026',gst:'',dep:'TBA – pricing mid-May',
    highlights:['90 single-family homes · 10 duplexes · 1 triplex · 1 fourplex','Single-family homes approx. $1,299,000–$1,499,000','Duplex homes from approx. $999,000–$1,099,000','Floor plans: Ironwood (2,355 sq ft) · Magnolia (3,025 sq ft) · Lupine (2,955 sq ft)','Optional basement suite on all plans — up to 730 sq ft','Private VIP/Realtor appointments available in May'],
    desc:'Master-planned community in Silver Valley, Maple Ridge, nestled alongside Anderson Creek Ravine. Grand Opening May 23rd with private VIP appointments prior.',
    cname:'Blacktail Sales Team',
-   hrs:'VIP appointments May — booking link mid-April',date:'2026-04-08',color:'green',images:['images/blacktail.jpg']},
+   hrs:'VIP appointments May — booking link mid-April',date:'2026-04-08',color:'green',images:['images/blacktail/main.jpg','images/blacktail/exterior.jpg','images/blacktail/floorplan.jpg']},
   {id:'bromley',name:'Bromley',dev:'Leone Homes',city:'Langley',region:'Langley',
    price:'From under $800K',pwas:'',psave:'',sold:0,type:'Townhome',beds:'3–4 Bed',
    status:'presale',badge:'',comp:'2027',gst:'',dep:'1% to start',
    highlights:['26-unit presale townhome community by Leone Homes','3 and 4 bedroom floor plans with modern finishes','Launching April 2026 — secure with just 1% deposit','Double garage · Private outdoor spaces'],
    desc:'26-unit presale townhome community by Leone Homes in Langley. Features 3 and 4 bedroom floor plans. Secure with just 1% deposit.',
-   cname:'Leone Homes Sales',hrs:'By appointment',date:'2026-04-11',color:'gold',images:['images/bromley.jpg']}
+   cname:'Leone Homes Sales',hrs:'By appointment',date:'2026-04-11',color:'gold',images:['images/bromley/main.jpg','images/bromley/exterior.jpg','images/bromley/interior.jpg']}
 ];
 
 /* ── STATE ── */
@@ -1095,14 +1124,87 @@ function buildCard(p){
 </div>`;
 }
 
+/* ── PHOTO GALLERY ── */
+let _galleryIdx=0, _galleryImgs=[], _galleryLbIdx=0;
+
+function buildGallery(images,name){
+  if(!images||!images.length){
+    return `<div class="gallery-wrap"><div class="gallery-slide-ph"><span class="gallery-ph-text">${name.slice(0,2).toUpperCase()}</span><span style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,149,106,.3);">${name}</span></div></div>`;
+  }
+  _galleryIdx=0;
+  _galleryImgs=[...images];
+  const slides=images.map((src,i)=>`<div class="gallery-slide"><img src="${src}" alt="${name} photo ${i+1}" loading="${i===0?'eager':'lazy'}"></div>`).join('');
+  const dots=images.length>1?`<div class="gallery-dots">${images.map((_,i)=>`<button class="gallery-dot${i===0?' active':''}" onclick="galJump(${i})"></button>`).join('')}</div>`:'';
+  const arrows=images.length>1?`<button class="gallery-prev" onclick="galPrev()">‹</button><button class="gallery-next" onclick="galNext()">›</button>`:'';
+  const counter=images.length>1?`<div class="gallery-counter" id="galCounter">1 / ${images.length}</div>`:'';
+  const fs=`<button class="gallery-fullscreen" onclick="openLightbox(${0})" title="View fullscreen">⛶</button>`;
+  return `<div class="gallery-wrap" id="galWrap">
+    <div class="gallery-track" id="galTrack">${slides}</div>
+    ${arrows}${dots}${counter}${fs}
+  </div>`;
+}
+
+function galPrev(){
+  _galleryIdx=(_galleryIdx-1+_galleryImgs.length)%_galleryImgs.length;
+  galUpdate();
+}
+function galNext(){
+  _galleryIdx=(_galleryIdx+1)%_galleryImgs.length;
+  galUpdate();
+}
+function galJump(i){
+  _galleryIdx=i;
+  galUpdate();
+}
+function galUpdate(){
+  const track=document.getElementById('galTrack');
+  if(track)track.style.transform=`translateX(-${_galleryIdx*100}%)`;
+  const dots=document.querySelectorAll('.gallery-dot');
+  dots.forEach((d,i)=>d.classList.toggle('active',i===_galleryIdx));
+  const ctr=document.getElementById('galCounter');
+  if(ctr)ctr.textContent=`${_galleryIdx+1} / ${_galleryImgs.length}`;
+  const fs=document.querySelector('.gallery-fullscreen');
+  if(fs)fs.setAttribute('onclick',`openLightbox(${_galleryIdx})`);
+}
+window.galPrev=galPrev; window.galNext=galNext; window.galJump=galJump;
+
+// Touch/swipe support for gallery
+function initGallerySwipe(){
+  const wrap=document.getElementById('galWrap');
+  if(!wrap||_galleryImgs.length<2)return;
+  let sx=0;
+  wrap.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});
+  wrap.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>40){dx<0?galNext():galPrev();}
+  },{passive:true});
+}
+
+// Lightbox
+function openLightbox(idx){
+  _galleryLbIdx=idx;
+  const lb=document.getElementById('lightbox');
+  lb.classList.add('open');
+  lbUpdate();
+}
+function lbUpdate(){
+  const img=document.getElementById('lbImg');
+  const ctr=document.getElementById('lbCounter');
+  if(img)img.src=_galleryImgs[_galleryLbIdx];
+  if(ctr)ctr.textContent=`${_galleryLbIdx+1} / ${_galleryImgs.length}`;
+}
+function lbPrev(){_galleryLbIdx=(_galleryLbIdx-1+_galleryImgs.length)%_galleryImgs.length;lbUpdate();}
+function lbNext(){_galleryLbIdx=(_galleryLbIdx+1)%_galleryImgs.length;lbUpdate();}
+window.openLightbox=openLightbox; window.lbPrev=lbPrev; window.lbNext=lbNext;
+
 /* ── DETAIL MODAL ── */
 function openDetail(id){
   const p=DATA.find(x=>x.id===id)||customListings.find(x=>x.id===id);
   if(!p)return;
   document.getElementById('detailTitle').textContent=p.name;
-  const imgHtml=p.images&&p.images.length?`<img src="${p.images[0]}" alt="${p.name}">`:`<div class="modal-img-ph">${p.name.slice(0,2).toUpperCase()}</div>`;
+  const galleryHtml=buildGallery(p.images,p.name);
   const promo=(p.pwas&&p.psave)?`<div style="display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#2a5a3a,#3d6b5a);color:#fff;padding:12px 16px;border-radius:10px;font-size:14px;margin-bottom:14px;">💰 <strong>${p.psave}</strong> · Was ${p.pwas}</div>`:'';
-  const gst=p.gst?`<div style="display:flex;align-items:center;gap:8px;font-size:14px;color:#065f46;background:#ecfdf5;padding:10px 14px;border-radius:8px;margin-bottom:14px;font-weight:500;">🏛️ GST Rebate — save <strong style="margin-left:4px;">up to $50K</strong></div>`:'';
+  const gst=p.gst?`<div style="display:flex;align-items:center;gap:8px;font-size:14px;color:#a7f3d0;background:rgba(16,185,129,.12);padding:10px 14px;border-radius:8px;margin-bottom:14px;font-weight:500;">🏛️ GST Rebate — save <strong style="margin-left:4px;">up to $50K</strong></div>`:'';
   const dep=p.dep?`<div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);padding:7px 14px;border-radius:8px;font-size:14px;margin-bottom:14px;">🔑 ${p.dep} deposit</div>`:'';
   const soldBar=p.sold>0?`<div style="margin-bottom:16px;">
     <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.45);margin-bottom:5px;"><span>Sold</span><span>${p.sold}%</span></div>
@@ -1118,7 +1220,7 @@ function openDetail(id){
     ${p.web?`<div style="font-size:13px;"><a href="${p.web}" target="_blank" style="color:var(--gold);text-decoration:none;">🔗 Visit Website →</a></div>`:''}
   </div>`;
   document.getElementById('detailBody').innerHTML=`
-<div class="modal-img">${imgHtml}</div>
+${galleryHtml}
 <div class="detail-grid">
   <div class="detail-item"><div class="d-label">City</div><div class="d-val">${p.city}</div></div>
   <div class="detail-item"><div class="d-label">Type</div><div class="d-val">${p.type||'—'}</div></div>
@@ -1142,6 +1244,7 @@ ${contact}
   <button class="btn btn-outline" style="width:100%;justify-content:center;padding:12px;" onclick="toggleSave('${p.id}');this.textContent=saved.includes('${p.id}')?'❤ Saved':'🤍 Save'">${saved.includes(p.id)?'❤ Saved':'🤍 Save'}</button>
 </div>`;
   openOv('detailModal');
+  setTimeout(initGallerySwipe, 100);
 }
 window.openDetail=openDetail;
 
@@ -1919,5 +2022,31 @@ init();
   </div>
 </div>
 
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lightbox" onclick="if(event.target===this)document.getElementById('lightbox').classList.remove('open')">
+  <button class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('open')">✕</button>
+  <button class="lightbox-prev" onclick="lbPrev()" id="lbPrevBtn">‹</button>
+  <img class="lightbox-img" id="lbImg" src="" alt="Photo">
+  <button class="lightbox-next" onclick="lbNext()" id="lbNextBtn">›</button>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<script>
+// Hide lightbox arrows if only 1 image
+document.addEventListener('click', function(e){
+  if(document.getElementById('lightbox').classList.contains('open')){
+    const n = _galleryImgs.length;
+    document.getElementById('lbPrevBtn').style.display = n > 1 ? 'flex' : 'none';
+    document.getElementById('lbNextBtn').style.display = n > 1 ? 'flex' : 'none';
+  }
+});
+// Keyboard nav for lightbox
+document.addEventListener('keydown', function(e){
+  if(!document.getElementById('lightbox').classList.contains('open')) return;
+  if(e.key === 'ArrowLeft') lbPrev();
+  if(e.key === 'ArrowRight') lbNext();
+  if(e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
+});
+</script>
 </body>
 </html>
