@@ -300,8 +300,8 @@ body{
 }
 @media(max-width:700px){.about{grid-template-columns:1fr;gap:32px;padding:36px 28px;}}
 .about-photo-wrap{margin-bottom:24px;}
-.about-photo{width:180px;height:220px;object-fit:cover;object-position:center top;border-radius:14px;border:2px solid rgba(201,149,106,.35);box-shadow:0 12px 40px rgba(0,0,0,.3);}
-@media(max-width:700px){.about-photo{width:140px;height:175px;}}
+.about-photo{width:240px;height:auto;max-height:360px;object-fit:contain;border-radius:14px;border:2px solid rgba(201,149,106,.35);box-shadow:0 12px 40px rgba(0,0,0,.3);}
+@media(max-width:700px){.about-photo{width:200px;}}
 .about-label{font-size:13px;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;font-weight:500;}
 .about-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,38px);font-weight:600;color:#fff;line-height:1.2;margin-bottom:18px;}
 .about-text{font-size:15px;line-height:1.9;color:rgba(255,255,255,.65);margin-bottom:12px;}
@@ -812,7 +812,14 @@ select.af-inp option{background:#0f1550;color:#fff;}
 'use strict';
 
 /* ── EmailJS ── */
-try{emailjs.init({publicKey:'Q2l2_DTcQkCJMDAEs'});}catch(e){console.error('EmailJS init failed:',e);}
+function initEmailJS(){
+  if(typeof emailjs!=='undefined'){
+    emailjs.init({publicKey:'Q2l2_DTcQkCJMDAEs'});
+  } else {
+    setTimeout(initEmailJS,200);
+  }
+}
+initEmailJS();
 
 /* ── STATUS LABELS ── */
 const STATUS_LABELS = {
@@ -1172,6 +1179,7 @@ function submitLead(){
   const phone=document.getElementById('fPhone').value.trim();
   const email=document.getElementById('fEmail').value.trim();
   if(!name||!phone){showToast('Please fill in your name and phone.');return;}
+  if(typeof emailjs==='undefined'){showToast('⚠️ Form loading, please try again in a moment.');return;}
   const params={from_name:name,phone:phone,email:email||'N/A',project:document.getElementById('fProject').value||'General',message:document.getElementById('fMessage').value||'No message',call_time:document.getElementById('fTime').value||'Any time'};
   emailjs.send('service_iaisg1o','template_ajg71qg',params)
     .then(function(){
@@ -1265,6 +1273,7 @@ function submitOffer(){
   const phone=document.getElementById('ofPhone').value.trim();
   const price=document.getElementById('ofPrice').value.trim();
   if(!name||!phone||!price){showToast('Please fill in name, phone and offer price.');return;}
+  if(typeof emailjs==='undefined'){showToast('⚠️ Form loading, please try again in a moment.');return;}
   const id=document.getElementById('offerFormWrap')._pid;
   const p=DATA.find(x=>x.id===id)||customListings.find(x=>x.id===id)||{name:'Unknown'};
   const msg=`💰 OFFER INTEREST\nProject: ${p.name}\nOffer Price: ${price}\nSubjects: ${document.getElementById('ofSubjects').value}\nCompletion: ${document.getElementById('ofCompletion').value}\nNotes: ${document.getElementById('ofNotes').value||'None'}`;
@@ -1426,7 +1435,13 @@ function apSave(){
   };
   const idx=customListings.findIndex(c=>c.id===editId);
   if(idx>=0)customListings[idx]=listing; else customListings.unshift(listing);
-  try{localStorage.setItem('parnam_custom',JSON.stringify(customListings));}catch(e){}
+  try{
+    localStorage.setItem('parnam_custom',JSON.stringify(customListings));
+  }catch(e){
+    showToast('⚠️ Storage full! Too many images. Try using image URLs instead of uploads.');
+    console.error('localStorage save failed:',e);
+    return;
+  }
   applyFilters();
   buildRegionChips();
   updateStats();
@@ -1648,10 +1663,9 @@ function handleImageUpload(input){
     if(!file.type.startsWith('image/')){processed++;return;}
     const reader=new FileReader();
     reader.onload=function(e){
-      // Resize to max 800px width for reasonable storage
       const img=new Image();
       img.onload=function(){
-        const maxW=800,maxH=600;
+        const maxW=480,maxH=360;
         let w=img.width,h=img.height;
         if(w>maxW){h=Math.round(h*(maxW/w));w=maxW;}
         if(h>maxH){w=Math.round(w*(maxH/h));h=maxH;}
@@ -1659,7 +1673,7 @@ function handleImageUpload(input){
         canvas.width=w;canvas.height=h;
         const ctx=canvas.getContext('2d');
         ctx.drawImage(img,0,0,w,h);
-        const dataUrl=canvas.toDataURL('image/jpeg',0.78);
+        const dataUrl=canvas.toDataURL('image/jpeg',0.55);
         window._editImages.push(dataUrl);
         processed++;
         if(processed>=total){
