@@ -1,0 +1,1776 @@
+[index.html](https://github.com/user-attachments/files/26664535/index.html)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0D1245">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Properties by Parnam | Surrey &amp; Langley Pre-Sale Specialist · BC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  font-family:'Jost',sans-serif;
+  background:#0D1245;
+  color:#fff;
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+:root{
+  --navy:#0D1245;
+  --navy2:#111852;
+  --gold:#C9956A;
+  --gold-lt:#D4A882;
+  --blush:#D4B8A8;
+  --lavender:#BCC3E0;
+  --cream:#f2ede6;
+  --warm:#faf8f4;
+  --ink:#1c1c1c;
+  --mid:#7a6f68;
+  --green:#3d6b5a;
+  --tan:#c4956a;
+  --tan-lt:#d4a882;
+  --radius:16px;
+  --radius-sm:10px;
+  --ease-spring:cubic-bezier(0.34,1.56,0.64,1);
+  --ease-out:cubic-bezier(0.22,1,0.36,1);
+  --shadow:0 8px 40px rgba(0,0,0,0.18);
+  --shadow-gold:0 8px 30px rgba(201,149,106,0.25);
+}
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-track{background:var(--navy);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px;}
+
+/* ── HERO ── */
+.hero{
+  position:relative;min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:env(safe-area-inset-top,20px) 24px 60px;
+  overflow:hidden;text-align:center;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#060a28 0%,#0c1040 35%,#111548 65%,#181e65 100%);
+  background-size:300% 300%;
+  animation:heroGrad 16s ease infinite;
+  z-index:0;
+}
+@keyframes heroGrad{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);z-index:0;animation:orbFloat 9s ease-in-out infinite;}
+.orb1{width:420px;height:420px;background:radial-gradient(circle,rgba(196,149,106,.12) 0%,transparent 70%);top:-10%;left:-12%;animation-delay:0s;}
+.orb2{width:320px;height:320px;background:radial-gradient(circle,rgba(217,219,237,.08) 0%,transparent 70%);bottom:-5%;right:-8%;animation-delay:-4s;}
+.orb3{width:240px;height:240px;background:radial-gradient(circle,rgba(42,74,107,.18) 0%,transparent 70%);top:40%;right:20%;animation-delay:-8s;}
+@keyframes orbFloat{0%,100%{transform:translateY(0) scale(1);opacity:.8;}50%{transform:translateY(-20px) scale(1.08);opacity:1;}}
+.hero-content{position:relative;z-index:1;max-width:680px;width:100%;}
+.hero-eyebrow{font-size:clamp(9px,2vw,11px);font-weight:500;letter-spacing:.38em;color:var(--lavender);text-transform:uppercase;margin-bottom:18px;opacity:0;animation:fadeUp .8s .2s ease forwards;}
+.hero-sub-label{font-size:clamp(9px,2vw,11px);font-weight:400;letter-spacing:.42em;color:rgba(255,255,255,.45);text-transform:uppercase;margin-bottom:6px;opacity:0;animation:fadeUp .8s .38s ease forwards;}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(68px,13vw,116px);font-weight:600;line-height:.9;color:var(--gold);margin-bottom:14px;opacity:0;animation:fadeUp .8s .5s ease forwards;}
+.hero-bc{font-size:clamp(9px,2vw,11px);letter-spacing:.35em;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:38px;opacity:0;animation:fadeUp .8s .65s ease forwards;}
+.hero-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3.5vw,24px);font-weight:300;font-style:italic;color:rgba(255,255,255,.65);margin-bottom:44px;opacity:0;animation:fadeUp .8s .75s ease forwards;}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;opacity:0;animation:fadeUp .8s .9s ease forwards;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:translateY(0);}}
+.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp .8s 1.2s ease forwards;z-index:1;}
+.hero-scroll span{font-size:9px;letter-spacing:.3em;color:rgba(255,255,255,.25);text-transform:uppercase;}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s ease-in-out infinite;}
+@keyframes scrollPulse{0%,100%{opacity:.3;}50%{opacity:1;}}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 30px;border-radius:100px;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.08em;text-decoration:none;cursor:pointer;transition:all .3s ease;border:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;min-height:48px;}
+.btn-primary{background:var(--gold);color:#fff;box-shadow:var(--shadow-gold);}
+.btn-primary:hover{background:var(--gold-lt);transform:translateY(-2px);box-shadow:0 14px 40px rgba(201,149,106,.4);}
+.btn-primary:active{transform:scale(.97);}
+.btn-outline{background:transparent;border:1.5px solid rgba(255,255,255,.22);color:rgba(255,255,255,.8);}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
+.btn-outline:active{transform:scale(.97);}
+.btn-navy{background:var(--navy);color:#fff;}
+.btn-navy:hover{background:var(--navy2);transform:translateY(-1px);}
+
+/* ── STICKY HEADER ── */
+.header{
+  position:sticky;top:0;z-index:100;
+  padding:0 24px;
+  background:rgba(13,18,69,.85);
+  backdrop-filter:blur(24px) saturate(180%);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);
+  border-bottom:1px solid rgba(201,149,106,.15);
+  transition:all .3s ease;
+}
+.header-inner{max-width:1200px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between;}
+.header-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold);text-decoration:none;flex-shrink:0;}
+.header-logo span{font-family:'Jost',sans-serif;font-size:9px;letter-spacing:.3em;color:rgba(255,255,255,.35);display:block;text-transform:uppercase;margin-top:-2px;}
+.header-nav{display:flex;align-items:center;gap:8px;}
+.nav-btn{padding:8px 16px;border-radius:100px;font-size:12px;font-weight:500;letter-spacing:.06em;cursor:pointer;transition:all .25s ease;border:none;min-height:40px;-webkit-tap-highlight-color:transparent;}
+.nav-ghost{background:transparent;color:rgba(255,255,255,.55);border:1px solid transparent;}
+.nav-ghost:hover{color:var(--gold);border-color:rgba(201,149,106,.3);}
+.nav-solid{background:var(--gold);color:#fff;}
+.nav-solid:hover{background:var(--gold-lt);}
+.nav-btn:active{transform:scale(.95);}
+
+/* ── STATS BAR ── */
+.stats-bar{background:var(--gold);display:flex;}
+.stat-item{flex:1;padding:16px 12px;text-align:center;border-right:1px solid rgba(255,255,255,.2);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#fff;line-height:1;}
+.stat-label{font-size:10px;letter-spacing:.22em;color:rgba(255,255,255,.7);text-transform:uppercase;margin-top:4px;}
+
+/* ── TYPE PILLS SECTION ── */
+.type-section{background:var(--navy);border-bottom:2px solid rgba(196,149,106,.2);padding:32px 24px;}
+.type-section-inner{max-width:1200px;margin:0 auto;}
+.type-section-title{text-align:center;margin-bottom:24px;}
+.type-label{font-size:10px;letter-spacing:.38em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.type-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,28px);font-weight:400;color:#fff;font-style:italic;}
+.type-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
+.type-pill{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  padding:14px 18px;border-radius:12px;min-width:90px;
+  background:rgba(255,255,255,.05);border:1.5px solid rgba(217,219,237,.15);
+  color:rgba(255,255,255,.55);cursor:pointer;
+  transition:all .25s cubic-bezier(.22,1,.36,1);
+  -webkit-tap-highlight-color:transparent;
+}
+.type-pill:hover{color:#fff;background:rgba(196,149,106,.15);border-color:var(--gold);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3);}
+.type-pill.active{color:#fff;background:rgba(196,149,106,.2);border-color:var(--gold);transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.4);}
+.type-pill:active{transform:scale(.96);}
+.type-pill-icon{font-size:22px;line-height:1;}
+.type-pill-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;text-align:center;line-height:1.3;white-space:pre-line;}
+.type-pill-count{font-size:10px;padding:1px 8px;border-radius:100px;background:rgba(255,255,255,.1);min-width:24px;text-align:center;}
+.type-pill.active .type-pill-count{background:var(--gold);color:#fff;}
+
+/* ── FILTER BAR ── */
+.filter-bar{
+  position:sticky;top:64px;z-index:90;
+  background:rgba(250,248,244,.96);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(14,18,69,.08);
+}
+.filter-inner{max-width:1200px;margin:0 auto;padding:12px 20px;}
+.filter-row1{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px;}
+.filter-row2{display:flex;gap:8px;flex-wrap:wrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;}
+.filter-row2::-webkit-scrollbar{display:none;}
+.search-wrap{position:relative;flex:1;min-width:160px;max-width:280px;}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--mid);pointer-events:none;}
+.search-input{width:100%;padding:9px 12px 9px 34px;border:1px solid rgba(14,18,69,.12);border-radius:8px;font-family:'Jost',sans-serif;font-size:13px;color:var(--ink);outline:none;background:#fff;transition:border-color .2s;}
+.search-input:focus{border-color:var(--gold);}
+.search-input::placeholder{color:rgba(14,18,69,.35);}
+.chip{
+  flex-shrink:0;padding:7px 16px;border-radius:100px;
+  font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:.06em;
+  cursor:pointer;transition:all .2s ease;border:1.5px solid rgba(14,18,69,.2);
+  background:#fff;color:var(--mid);white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;min-height:36px;
+}
+.chip:hover{border-color:var(--navy);background:var(--navy);color:#fff;}
+.chip.on{background:var(--navy);color:#fff;border-color:var(--navy);}
+.chip:active{transform:scale(.95);}
+.region-chip{font-size:11px;padding:6px 13px;}
+.sort-select{
+  background:#fff;border:1px solid rgba(14,18,69,.12);color:var(--mid);
+  padding:8px 14px;border-radius:8px;font-family:'Jost',sans-serif;
+  font-size:12px;cursor:pointer;outline:none;margin-left:auto;
+  -webkit-appearance:none;
+}
+.results-row{max-width:1200px;margin:0 auto;padding:10px 20px 4px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.results-count{font-size:12px;color:var(--mid);}
+.results-count strong{color:var(--ink);font-weight:600;}
+
+/* ── MAIN ── */
+.main{max-width:1200px;margin:0 auto;padding:28px 20px 80px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;}
+@media(max-width:480px){.cards{grid-template-columns:1fr;gap:16px;}}
+
+/* ── CARD — light card like the old file ── */
+.card{
+  background:#fff;
+  border-radius:var(--radius);
+  overflow:hidden;
+  cursor:pointer;
+  border:1px solid rgba(14,18,69,.08);
+  transition:transform .45s var(--ease-spring),box-shadow .4s var(--ease-out),border-color .3s ease;
+  will-change:transform;
+}
+.card:hover{transform:translateY(-8px) scale(1.012);box-shadow:0 28px 64px rgba(14,18,69,.14),0 8px 20px rgba(14,18,69,.08);border-color:rgba(196,149,106,.25);}
+.card:active{transform:scale(.98);}
+.card-img{position:relative;height:210px;overflow:hidden;}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;}
+.card:hover .card-img img{transform:scale(1.06);}
+.card-img-placeholder{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  background:linear-gradient(135deg,var(--cream),#e8e4dc);
+  color:var(--mid);
+}
+.card-img-placeholder-icon{font-size:42px;}
+.card-img-placeholder-text{font-size:10px;letter-spacing:.2em;text-transform:uppercase;}
+.accent-bar{height:4px;}
+.card-badges{position:absolute;top:12px;left:12px;display:flex;gap:6px;flex-wrap:wrap;}
+.badge{padding:4px 10px;border-radius:100px;font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}
+.badge-status-movein{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0;}
+.badge-status-presale{background:#ededf5;color:#0e1245;border:1px solid #c8cceb;}
+.badge-status-hardhat{background:#faf8f4;color:#0e1245;border:1px solid #c4956a;}
+.badge-status-comingsoon{background:#eeedf8;color:#3a2a6b;border:1px solid #c8c0e0;}
+.badge-status-sellingfast{background:#fffbeb;color:#92400e;border:1px solid #fcd34d;}
+.badge-extra{background:#fffbeb;color:#92400e;border:1px solid #fde68a;}
+.badge-region{background:rgba(13,18,69,.85);color:#fff;border:none;}
+.card-body{padding:20px;}
+.card-region{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:100px;background:var(--navy);color:#fff;font-size:9px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px;}
+.card-badges-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
+.card-date{font-size:10px;color:var(--mid);margin-left:auto;}
+.card-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--ink);line-height:1.15;margin-bottom:3px;}
+.card-dev{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:12px;}
+.card-location{display:flex;align-items:flex-start;gap:6px;font-size:12px;color:var(--mid);margin-bottom:10px;}
+.card-location-icon{color:var(--tan);flex-shrink:0;}
+.card-completion{display:inline-flex;align-items:center;gap:6px;background:#ededf5;color:var(--navy);padding:5px 12px;border-radius:6px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;}
+.card-price-row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
+.card-price{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--ink);}
+.card-was{font-size:13px;color:var(--mid);text-decoration:line-through;}
+.card-savings{font-size:11px;color:var(--green);background:#ecfdf5;padding:3px 8px;border-radius:4px;}
+.card-promo{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#2a5a3a,#3d6b5a);color:#fff;padding:10px 14px;border-radius:8px;font-size:11px;margin-bottom:12px;}
+.card-promo-save{color:#a7f3d0;font-weight:600;}
+.card-gst{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--navy),#1a2260);color:#fff;padding:10px 14px;border-radius:8px;font-size:11px;margin-bottom:12px;}
+.card-gst-amt{color:var(--tan-lt);font-weight:600;margin-left:4px;}
+.card-sold{margin-bottom:14px;}
+.card-sold-header{display:flex;justify-content:space-between;font-size:10px;color:var(--mid);margin-bottom:4px;}
+.card-sold-bar{height:4px;background:var(--cream);border-radius:100px;overflow:hidden;}
+.card-sold-fill{height:100%;background:var(--tan);border-radius:100px;transition:width 1.2s cubic-bezier(.22,1,.36,1);}
+.card-highlights{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.card-highlight{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--ink);line-height:1.4;}
+.card-highlight-dot{color:var(--tan);font-size:9px;margin-top:3px;flex-shrink:0;}
+.card-more{font-size:11px;color:var(--mid);}
+.card-footer{border-top:1px solid var(--cream);padding-top:14px;}
+.card-contact-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:12px;}
+.card-contact-info{font-size:11px;color:var(--mid);line-height:1.6;}
+.card-contact-name{font-size:12px;font-weight:500;color:var(--ink);}
+.card-admin-btns{display:flex;gap:6px;flex-shrink:0;}
+.admin-btn{padding:6px 10px;border-radius:6px;font-size:10px;font-weight:500;cursor:pointer;border:1px solid;transition:all .2s;-webkit-tap-highlight-color:transparent;min-height:32px;}
+.admin-btn-post{background:var(--navy);color:#fff;border-color:var(--navy);}
+.admin-btn-post:hover{background:var(--gold);}
+.admin-btn-edit{background:var(--cream);color:var(--ink);border-color:rgba(14,18,69,.12);}
+.admin-btn-edit:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
+.admin-btn-del{background:#fff;color:#ef4444;border-color:#fecaca;}
+.admin-btn-del:hover{background:#ef4444;color:#fff;}
+.card-cta-row{display:flex;flex-direction:column;gap:8px;}
+.cta-primary{padding:12px;border-radius:8px;background:var(--gold);color:#fff;font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border:none;width:100%;transition:all .2s;-webkit-tap-highlight-color:transparent;}
+.cta-primary:hover{background:var(--gold-lt);transform:scale(1.02);}
+.cta-primary:active{transform:scale(.97);}
+.cta-secondary{padding:10px;border-radius:8px;background:#fff;color:var(--tan);font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border:1.5px solid var(--tan);width:100%;transition:all .2s;-webkit-tap-highlight-color:transparent;}
+.cta-secondary:hover{background:var(--tan);color:#fff;}
+
+/* ── EMPTY ── */
+.empty{grid-column:1/-1;text-align:center;padding:80px 20px;color:var(--mid);}
+.empty-icon{font-size:48px;margin-bottom:16px;}
+.empty-title{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--ink);margin-bottom:8px;}
+.empty-sub{font-size:14px;}
+
+/* ── ENGAGEMENT SECTIONS ── */
+.engage-section{margin:0 0 80px;}
+.engage-card{padding:56px 48px;border-radius:var(--radius);position:relative;overflow:hidden;}
+.engage-navy{background:linear-gradient(135deg,var(--navy) 0%,#141852 100%);}
+.engage-warm{background:linear-gradient(135deg,#2c1a0e 0%,#3d2410 100%);}
+.engage-inner{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;position:relative;z-index:1;}
+.engage-label{font-size:10px;letter-spacing:.35em;text-transform:uppercase;margin-bottom:12px;}
+.engage-title{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.2;margin-bottom:12px;font-size:clamp(22px,3.5vw,30px);}
+.engage-title em{font-style:italic;}
+.engage-desc{font-size:13px;line-height:1.8;opacity:.6;}
+.engage-cta{flex-shrink:0;text-align:center;}
+.engage-cta-note{font-size:10px;opacity:.4;margin-top:8px;}
+@media(max-width:640px){.engage-card{padding:36px 28px;}.engage-inner{flex-direction:column;gap:28px;}.engage-cta .btn{width:100%;justify-content:center;}}
+
+/* ── ABOUT / CTA SECTIONS ── */
+.about{
+  margin:0 0 64px;padding:56px 48px;
+  background:#ffffff;border:1px solid rgba(14,18,69,.08);
+  border-radius:var(--radius);
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+}
+@media(max-width:700px){.about{grid-template-columns:1fr;gap:32px;padding:36px 28px;}}
+.about-label{font-size:11px;letter-spacing:.35em;color:var(--tan);text-transform:uppercase;margin-bottom:14px;font-weight:500;}
+.about-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,38px);font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:18px;}
+.about-text{font-size:15px;line-height:1.9;color:#2a2a2a;margin-bottom:12px;}
+.about-stats{display:flex;gap:28px;margin-top:24px;}
+.astat-num{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:var(--gold);}
+.astat-label{font-size:11px;color:rgba(255,255,255,.35);margin-top:2px;}
+.about-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.8vw,24px);font-style:italic;font-weight:300;color:#3a3a3a;line-height:1.65;border-left:2px solid var(--gold);padding-left:22px;margin-bottom:28px;}
+.about-contact{display:flex;flex-direction:column;gap:10px;}
+.contact-row{display:flex;align-items:center;gap:10px;font-size:14px;color:#2a2a2a;}
+.contact-row a{color:var(--gold);text-decoration:none;}
+.contact-row a:hover{text-decoration:underline;}
+
+/* ── OVERLAY MODALS ── */
+.overlay{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(5,8,30,.85);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  display:flex;align-items:flex-end;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .35s ease;
+}
+@media(min-width:600px){.overlay{align-items:center;}}
+.overlay.open{opacity:1;pointer-events:all;}
+.modal{
+  background:linear-gradient(135deg,#111852,#0D1245);
+  border:1px solid rgba(201,149,106,.2);
+  border-radius:var(--radius) var(--radius) 0 0;
+  width:100%;max-width:620px;max-height:90svh;
+  overflow-y:auto;
+  transform:translateY(40px);
+  transition:transform .42s cubic-bezier(.34,1.2,.64,1);
+  -webkit-overflow-scrolling:touch;
+}
+@media(min-width:600px){.modal{border-radius:var(--radius);max-height:86vh;}}
+.overlay.open .modal{transform:translateY(0);}
+.modal-drag{width:40px;height:4px;background:rgba(255,255,255,.12);border-radius:2px;margin:12px auto 0;}
+@media(min-width:600px){.modal-drag{display:none;}}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:22px 28px 16px;border-bottom:1px solid rgba(255,255,255,.06);}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#fff;}
+.modal-close{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.07);border:none;cursor:pointer;font-size:17px;color:rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;-webkit-tap-highlight-color:transparent;}
+.modal-close:hover{background:rgba(255,255,255,.14);color:#fff;}
+.modal-body{padding:24px 28px 32px;}
+.modal-img{width:100%;height:210px;border-radius:var(--radius-sm);overflow:hidden;margin-bottom:22px;background:linear-gradient(135deg,rgba(201,149,106,.1),rgba(13,18,69,.8));display:flex;align-items:center;justify-content:center;}
+.modal-img img{width:100%;height:100%;object-fit:cover;}
+.modal-img-ph{font-family:'Cormorant Garamond',serif;font-size:50px;font-weight:600;color:rgba(201,149,106,.25);}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px;}
+@media(max-width:500px){.detail-grid{grid-template-columns:1fr;}}
+.detail-item .d-label{font-size:9px;letter-spacing:.3em;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:3px;}
+.detail-item .d-val{font-size:14px;color:rgba(255,255,255,.8);}
+.detail-desc{font-size:13px;line-height:1.85;color:rgba(255,255,255,.5);margin-bottom:26px;}
+.modal-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.modal-actions .btn{flex:1;min-width:130px;justify-content:center;}
+
+/* ── LEAD FORM ── */
+.form-group{margin-bottom:16px;}
+.form-label{display:block;font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:7px;}
+.form-input{width:100%;padding:12px 16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-sm);color:#fff;font-family:'Jost',sans-serif;font-size:14px;outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.form-input:focus{border-color:var(--gold);}
+.form-input::placeholder{color:rgba(255,255,255,.2);}
+textarea.form-input{resize:none;height:96px;}
+select.form-input{cursor:pointer;}
+select.form-input option{background:#111852;color:#fff;}
+.form-success{text-align:center;padding:40px 20px;display:none;}
+.form-success.show{display:block;}
+.success-icon{font-size:48px;margin-bottom:14px;}
+.success-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#fff;margin-bottom:8px;}
+.success-msg{font-size:13px;color:rgba(255,255,255,.5);}
+
+/* ── SAVED PANEL ── */
+.saved-empty{text-align:center;padding:40px 20px;color:rgba(255,255,255,.3);font-size:14px;}
+.saved-item{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);}
+.saved-item:last-child{border-bottom:none;}
+.saved-thumb{width:58px;height:58px;border-radius:8px;background:rgba(201,149,106,.12);flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;color:rgba(201,149,106,.35);}
+.saved-thumb img{width:100%;height:100%;object-fit:cover;}
+.saved-info{flex:1;min-width:0;}
+.saved-name{font-family:'Cormorant Garamond',serif;font-size:18px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.saved-sub{font-size:11px;color:var(--gold);}
+.saved-remove{background:none;border:none;cursor:pointer;color:rgba(255,255,255,.25);font-size:18px;padding:4px;-webkit-tap-highlight-color:transparent;}
+.saved-remove:hover{color:#ef4444;}
+
+/* ── FOOTER ── */
+.footer{border-top:1px solid rgba(255,255,255,.06);padding:36px 20px env(safe-area-inset-bottom,20px);text-align:center;}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--gold);margin-bottom:6px;}
+.footer-sub{font-size:9px;letter-spacing:.3em;color:rgba(255,255,255,.22);text-transform:uppercase;margin-bottom:18px;}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:20px;}
+.footer-links a{font-size:12px;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-copy{font-size:10px;color:rgba(255,255,255,.18);}
+
+/* ── TOAST ── */
+#toast{
+  position:fixed;bottom:calc(20px + env(safe-area-inset-bottom));
+  left:50%;transform:translateX(-50%) translateY(20px);
+  background:rgba(196,149,106,.95);color:#fff;
+  padding:11px 22px;border-radius:100px;
+  font-size:12px;font-weight:500;
+  z-index:999;opacity:0;transition:all .35s ease;
+  pointer-events:none;white-space:nowrap;
+  max-width:calc(100vw - 40px);text-align:center;
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .header-inner{height:56px;}
+  .header-logo{font-size:18px;}
+  .nav-ghost{display:none;}
+  .stats-bar .stat-item{padding:12px 8px;}
+  .stat-num{font-size:22px;}
+}
+
+/* ── ADMIN BUTTON ── */
+.nav-admin{background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);font-size:15px;padding:8px 13px;}
+.nav-admin:hover,.nav-admin.unlocked{background:rgba(201,149,106,.2);color:var(--gold);}
+
+/* ── BROKERAGE BLOCK ── */
+.about-brokerage{display:flex;align-items:center;gap:14px;margin-top:22px;padding:14px 18px;background:#f9f7f4;border:1px solid rgba(201,149,106,.25);border-radius:10px;}
+.brokerage-logo{height:52px;width:auto;}
+.brokerage-label{font-size:13px;color:#555;line-height:1.6;}
+
+/* ── LISTINGS LIGHT-BG WRAPPER ── */
+.listings-wrap{background:#f5f3ef;}
+
+/* ── FILTER BAR (override) ── */
+.filter-bar{background:#f5f3ef !important;border-bottom:1px solid rgba(14,18,69,.1) !important;}
+.results-row{background:#f5f3ef;}
+.results-count{font-size:14px;color:rgba(14,18,69,.55);}
+.results-count strong{color:var(--navy);font-weight:700;}
+
+/* ── MAIN AREA ── */
+.main{background:#f5f3ef;}
+
+/* ── CARD REDESIGN ── */
+.card{
+  background:#fff;border-radius:14px;overflow:hidden;cursor:pointer;
+  border:1px solid rgba(14,18,69,.07);
+  box-shadow:0 2px 12px rgba(14,18,69,.06);
+  transition:transform .4s cubic-bezier(.34,1.4,.64,1),box-shadow .35s ease;
+  will-change:transform;display:flex;flex-direction:column;
+}
+.card:hover{transform:translateY(-7px);box-shadow:0 22px 50px rgba(14,18,69,.13);}
+.card:active{transform:scale(.98);}
+.card-img{position:relative;height:215px;overflow:hidden;background:#e8e4dc;flex-shrink:0;}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;display:block;}
+.card:hover .card-img img{transform:scale(1.05);}
+.card-img-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(160deg,#e8e4dc 0%,#d8d3ca 100%);}
+.card-img-ph-icon{font-size:36px;opacity:.4;}
+.card-img-ph-text{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);opacity:.55;}
+
+/* status pill */
+.card-status-pill{position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:100px;font-family:'Jost',sans-serif;font-size:12px;font-weight:600;letter-spacing:.03em;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+.card-status-pill::before{content:'';width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.p-movein{background:rgba(236,253,245,.93);color:#065f46;}.p-movein::before{background:#10b981;}
+.p-presale{background:rgba(237,237,245,.93);color:#0e1245;}.p-presale::before{background:#6366f1;}
+.p-hardhat{background:rgba(255,251,235,.93);color:#92400e;}.p-hardhat::before{background:#f59e0b;}
+.p-comingsoon{background:rgba(238,237,248,.93);color:#3a2a6b;}.p-comingsoon::before{background:#8b5cf6;}
+.p-sellingfast{background:rgba(255,241,242,.93);color:#9f1239;}.p-sellingfast::before{background:#f43f5e;animation:pdot 1.4s ease-in-out infinite;}
+@keyframes pdot{0%,100%{opacity:1;}50%{opacity:.3;}}
+.card-ribbon{position:absolute;top:12px;right:12px;background:var(--gold);color:#fff;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:100px;}
+.card-savebtn{position:absolute;bottom:12px;right:12px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.88);border:none;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .2s;pointer-events:all;box-shadow:0 2px 8px rgba(0,0,0,.12);}
+.card-savebtn:hover{transform:scale(1.12);background:#fff;}
+
+/* card body */
+.accent-bar{height:3px;flex-shrink:0;}
+.card-body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1;}
+.card-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.card-region{font-size:12px;color:var(--mid);}
+.card-datetag{font-size:11px;color:rgba(14,18,69,.3);}
+.card-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:3px;}
+.card-dev{font-size:12px;color:var(--mid);margin-bottom:12px;}
+.card-price-block{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+.card-price{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;font-style:italic;color:var(--tan);letter-spacing:-.01em;line-height:1;}
+.card-price-was{font-size:13px;color:var(--mid);text-decoration:line-through;opacity:.6;}
+.card-price-save{font-size:11px;font-weight:600;color:#065f46;background:#ecfdf5;padding:2px 8px;border-radius:4px;}
+.card-specs{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
+.card-spec{font-size:13px;color:var(--mid);}
+.card-dep{display:inline-flex;align-items:center;gap:5px;background:#f0f0f8;color:#0e1245;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:500;margin-bottom:10px;}
+.card-gst{display:flex;align-items:center;gap:6px;font-size:12px;color:#065f46;background:#ecfdf5;padding:7px 12px;border-radius:7px;margin-bottom:8px;font-weight:500;}
+.card-promo{display:flex;align-items:center;gap:6px;font-size:12px;color:#1e3a5f;background:#eff6ff;padding:7px 12px;border-radius:7px;margin-bottom:8px;font-weight:500;}
+.card-sold{margin-bottom:12px;}
+.card-sold-hdr{display:flex;justify-content:space-between;font-size:12px;color:var(--mid);margin-bottom:4px;}
+.card-sold-bar{height:4px;background:#e8e4dc;border-radius:100px;overflow:hidden;}
+.card-sold-fill{height:100%;background:linear-gradient(90deg,var(--tan),var(--gold-lt));border-radius:100px;transition:width 1.2s cubic-bezier(.22,1,.36,1);}
+.card-hls{margin-bottom:14px;display:flex;flex-direction:column;gap:5px;}
+.card-hl{display:flex;align-items:flex-start;gap:7px;font-size:13px;color:#3a3a3a;line-height:1.45;}
+.card-hl-dot{color:var(--tan);font-size:8px;margin-top:5px;flex-shrink:0;}
+.card-hl-more{font-size:12px;color:var(--mid);padding-left:14px;}
+.card-footer{margin-top:auto;border-top:1px solid #f0ece6;padding-top:13px;}
+.card-cinfo{font-size:12px;color:var(--mid);line-height:1.5;margin-bottom:11px;}
+.card-cname{font-size:13px;font-weight:600;color:var(--ink);}
+.cta-p{padding:12px;border-radius:9px;background:var(--gold);color:#fff;font-family:'Jost',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border:none;width:100%;transition:all .2s;-webkit-tap-highlight-color:transparent;margin-bottom:7px;display:block;text-align:center;}
+.cta-p:hover{background:var(--gold-lt);}
+.cta-p:active{transform:scale(.97);}
+.cta-row2{display:flex;gap:7px;}
+.cta-s{padding:10px;border-radius:9px;background:#fff;color:var(--tan);font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;border:1.5px solid rgba(196,149,106,.4);flex:1;transition:all .2s;-webkit-tap-highlight-color:transparent;}
+.cta-s:hover{background:var(--tan);color:#fff;border-color:var(--tan);}
+.cta-o{padding:10px;border-radius:9px;background:var(--navy);color:#fff;font-family:'Jost',sans-serif;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;border:none;flex:1;transition:all .2s;-webkit-tap-highlight-color:transparent;}
+.cta-o:hover{background:var(--navy2);}
+
+/* ── OFFER MODAL ── */
+.offer-proj{background:rgba(201,149,106,.08);border:1px solid rgba(201,149,106,.2);border-radius:10px;padding:13px 15px;margin-bottom:18px;}
+.offer-proj-lbl{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:3px;}
+.offer-proj-name{font-family:'Cormorant Garamond',serif;font-size:20px;color:#fff;font-weight:600;}
+.offer-proj-sub{font-size:12px;color:var(--gold);margin-top:2px;}
+
+/* ── PIN MODAL ── */
+.pin-overlay{position:fixed;inset:0;z-index:400;background:rgba(5,8,30,.95);backdrop-filter:blur(20px);display:none;align-items:center;justify-content:center;}
+.pin-overlay.open{display:flex;}
+.pin-box{background:#0f1550;border:1px solid rgba(201,149,106,.25);border-radius:20px;padding:40px 36px;width:100%;max-width:340px;text-align:center;}
+.pin-icon{font-size:38px;margin-bottom:14px;}
+.pin-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#fff;margin-bottom:6px;}
+.pin-sub{font-size:13px;color:rgba(255,255,255,.4);margin-bottom:24px;}
+.pin-input{width:100%;padding:15px;text-align:center;letter-spacing:.6em;font-family:'Cormorant Garamond',serif;font-size:30px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;color:#fff;outline:none;margin-bottom:12px;-webkit-appearance:none;transition:border-color .2s;}
+.pin-input:focus{border-color:var(--gold);}
+.pin-input.shake{animation:pinshake .4s ease;}
+@keyframes pinshake{0%,100%{transform:translateX(0);}25%{transform:translateX(-8px);}75%{transform:translateX(8px);}}
+.pin-btn{width:100%;padding:13px;border-radius:10px;background:var(--gold);color:#fff;font-family:'Jost',sans-serif;font-size:14px;font-weight:600;cursor:pointer;border:none;}
+.pin-btn:hover{background:var(--gold-lt);}
+.pin-err{font-size:12px;color:#fca5a5;margin-bottom:8px;display:none;}
+.pin-hint{font-size:11px;color:rgba(255,255,255,.2);margin-top:12px;}
+
+/* ── ADMIN PANEL ── */
+.admin-overlay{position:fixed;inset:0;z-index:300;background:rgba(5,8,30,.9);backdrop-filter:blur(16px);display:none;align-items:center;justify-content:center;padding:12px;}
+.admin-overlay.open{display:flex;}
+.admin-panel{background:#0f1550;border:1px solid rgba(201,149,106,.22);border-radius:18px;width:100%;max-width:760px;max-height:92svh;display:flex;flex-direction:column;overflow:hidden;}
+.ap-header{background:linear-gradient(135deg,#0a0f3a,#111852);padding:18px 26px;border-bottom:2px solid rgba(201,149,106,.18);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.ap-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold);}
+.ap-title span{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.15em;color:rgba(255,255,255,.3);display:block;text-transform:uppercase;margin-top:2px;}
+.ap-close{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.07);border:none;cursor:pointer;font-size:16px;color:rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.ap-close:hover{background:rgba(255,255,255,.14);color:#fff;}
+.ap-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0;}
+.ap-tab{flex:1;padding:12px 8px;font-family:'Jost',sans-serif;font-size:12px;font-weight:500;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,.35);transition:all .2s;border-bottom:2px solid transparent;-webkit-tap-highlight-color:transparent;}
+.ap-tab:hover{color:rgba(255,255,255,.7);}
+.ap-tab.on{color:var(--gold);border-bottom-color:var(--gold);}
+.ap-body{overflow-y:auto;flex:1;padding:22px 24px;-webkit-overflow-scrolling:touch;}
+.ap-sec{display:none;}.ap-sec.on{display:block;}
+.al-row{display:flex;align-items:center;gap:10px;padding:11px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;margin-bottom:8px;}
+.al-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.al-info{flex:1;min-width:0;}
+.al-name{font-family:'Cormorant Garamond',serif;font-size:18px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.al-sub{font-size:11px;color:rgba(255,255,255,.3);margin-top:1px;}
+.al-btns{display:flex;gap:5px;flex-shrink:0;}
+.al-btn{padding:5px 10px;border-radius:7px;font-size:12px;cursor:pointer;border:1px solid;transition:all .2s;font-weight:500;}
+.al-edit{background:rgba(255,255,255,.04);color:rgba(255,255,255,.55);border-color:rgba(255,255,255,.13);}
+.al-edit:hover{background:rgba(201,149,106,.2);color:var(--gold);border-color:var(--gold);}
+.al-del{background:rgba(239,68,68,.04);color:rgba(239,68,68,.55);border-color:rgba(239,68,68,.18);}
+.al-del:hover{background:rgba(239,68,68,.14);color:#ef4444;border-color:#ef4444;}
+.af-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:540px){.af-grid{grid-template-columns:1fr;}}
+.af-full{grid-column:1/-1;}
+.af-sec{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding-top:6px;border-top:1px solid rgba(255,255,255,.06);grid-column:1/-1;margin-top:4px;}
+.af-grp{display:flex;flex-direction:column;gap:5px;}
+.af-lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);}
+.af-inp{padding:10px 13px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;font-family:'Jost',sans-serif;font-size:14px;outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.af-inp:focus{border-color:var(--gold);}
+.af-inp::placeholder{color:rgba(255,255,255,.18);}
+textarea.af-inp{resize:vertical;min-height:80px;}
+select.af-inp{cursor:pointer;}
+select.af-inp option{background:#0f1550;color:#fff;}
+.af-save{width:100%;padding:13px;border-radius:10px;background:linear-gradient(135deg,var(--gold),var(--gold-lt));color:#fff;font-family:'Jost',sans-serif;font-size:14px;font-weight:600;cursor:pointer;border:none;margin-top:6px;}
+.af-save:hover{opacity:.9;}
+.imp-box{border:2px dashed rgba(201,149,106,.28);border-radius:14px;padding:28px 20px;text-align:center;cursor:pointer;transition:all .25s;}
+.imp-box:hover{border-color:var(--gold);background:rgba(201,149,106,.04);}
+.imp-icon{font-size:36px;margin-bottom:10px;}
+.imp-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:#fff;margin-bottom:6px;}
+.imp-sub{font-size:13px;color:rgba(255,255,255,.38);line-height:1.6;}
+.imp-status{margin-top:16px;padding:14px;border-radius:10px;font-size:13px;line-height:1.6;display:none;}
+.imp-status.loading{display:block;background:rgba(201,149,106,.07);border:1px solid rgba(201,149,106,.18);color:rgba(255,255,255,.65);}
+.imp-status.ok{display:block;background:rgba(61,107,90,.14);border:1px solid rgba(61,107,90,.35);color:#a7f3d0;}
+.imp-status.err{display:block;background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.22);color:#fca5a5;}
+.url-row{display:flex;gap:8px;margin-top:18px;}
+.url-fld{flex:1;padding:11px 14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11);border-radius:10px;color:#fff;font-family:'Jost',sans-serif;font-size:14px;outline:none;}
+.url-fld:focus{border-color:var(--gold);}
+.url-fld::placeholder{color:rgba(255,255,255,.22);}
+.url-go{padding:11px 18px;border-radius:10px;background:var(--gold);color:#fff;font-family:'Jost',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border:none;white-space:nowrap;}
+.url-go:hover{background:var(--gold-lt);}
+.url-go:disabled{opacity:.45;cursor:not-allowed;}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spinr .7s linear infinite;vertical-align:middle;margin-right:5px;}
+@keyframes spinr{to{transform:rotate(360deg);}}
+.imp-prev-btn{width:100%;padding:12px;border-radius:10px;background:var(--gold);color:#fff;font-family:'Jost',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border:none;margin-top:14px;}
+
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Pre-Sale &amp; New Construction Specialists</p>
+    <p class="hero-sub-label" style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2.5vw,18px);font-weight:400;letter-spacing:.45em;">Properties by</p>
+    <h1 class="hero-name">Parnam</h1>
+    <p class="hero-bc">BC &middot; Canada</p>
+    <p class="hero-tagline">Your trusted guide to BC's finest new developments</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary" onclick="document.getElementById('listings').scrollIntoView({behavior:'smooth'})">Browse Listings ↓</button>
+      <button class="btn btn-outline" onclick="openOv('leadModal');setFormProject('General Inquiry')">Book a Call</button>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Explore</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ── HEADER ── -->
+<header class="header">
+  <div class="header-inner">
+    <a href="#top" class="header-logo">Parnam<span>Surrey · Langley · BC</span></a>
+    <nav class="header-nav">
+      <button class="nav-btn nav-ghost" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</button>
+      <button class="nav-btn nav-ghost" onclick="openOv('savedPanel')">❤ Saved</button>
+      <button class="nav-btn nav-solid" onclick="openOv('leadModal');setFormProject('General Inquiry')">Contact</button>
+      <button class="nav-btn nav-admin" id="adminBtn" onclick="checkAdmin()" title="Admin Panel">🔒</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ── STATS BAR ── -->
+<div class="stats-bar" id="statsBar">
+  <div class="stat-item"><div class="stat-num" id="statTotal">0</div><div class="stat-label">Listings</div></div>
+  <div class="stat-item"><div class="stat-num" id="statMovein">0</div><div class="stat-label">Move-In Ready</div></div>
+  <div class="stat-item"><div class="stat-num" id="statPresale">0</div><div class="stat-label">Pre-Sales</div></div>
+  <div class="stat-item"><div class="stat-num" id="statRegions">0</div><div class="stat-label">Regions</div></div>
+</div>
+
+<!-- ── TYPE PILLS ── -->
+<div class="type-section">
+  <div class="type-section-inner">
+    <div class="type-section-title">
+      <p class="type-label">What are you looking for?</p>
+      <h2 class="type-heading">Lower Mainland &amp; Fraser Valley <em>new developments</em></h2>
+    </div>
+    <div class="type-pills" id="typePills"></div>
+  </div>
+</div>
+
+<div class="listings-wrap">
+<!-- ── FILTER BAR ── -->
+<div class="filter-bar" id="filterBarWrap">
+  <div class="filter-inner">
+    <div class="filter-row1">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input class="search-input" id="searchInput" placeholder="Search project, city, developer…" oninput="applyFilters()">
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;" id="statusChips">
+        <button class="chip on" data-status="all" onclick="setStatus('all',this)">All</button>
+        <button class="chip" data-status="move-in" onclick="setStatus('move-in',this)">Move-In Ready</button>
+        <button class="chip" data-status="presale" onclick="setStatus('presale',this)">Pre-Sale</button>
+        <button class="chip" data-status="gst" onclick="setStatus('gst',this)">GST Rebate</button>
+      </div>
+      <select class="sort-select" id="sortSel" onchange="applyFilters()">
+        <option value="date-desc">Newest First</option>
+        <option value="date-asc">Oldest First</option>
+        <option value="price-asc">Price Low→High</option>
+        <option value="price-desc">Price High→Low</option>
+        <option value="name">Name A→Z</option>
+      </select>
+    </div>
+    <div class="filter-row2" id="regionChips">
+      <button class="chip region-chip on" data-region="all" onclick="setRegion('all',this)">All Regions</button>
+    </div>
+  </div>
+  <div class="results-row">
+    <p class="results-count" id="resultsCount"><strong>0</strong> developments found</p>
+  </div>
+</div>
+
+<!-- ── MAIN LISTINGS ── -->
+<main class="main" id="listings">
+  <div class="cards" id="cardsGrid"></div>
+
+  <!-- ABOUT -->
+  <section class="about reveal" id="about">
+    <div>
+      <p class="about-label">About Parnam</p>
+      <h2 class="about-title">Surrey &amp; Langley<br><em>Pre-Sale Specialist</em></h2>
+      <p class="about-text">With deep roots in both Surrey and Langley, Parnam brings on-the-ground knowledge of the Fraser Valley and Metro Vancouver's most exciting pre-sale markets.</p>
+      <p class="about-text">Specializing in new construction and pre-sale developments — helping buyers secure tomorrow's best properties with exclusive VIP pre-sale access across BC.</p>
+    </div>
+    <div>
+      <p class="about-quote">"Finding the right home isn't just about the property — it's about the life you'll build there."</p>
+      <div class="about-contact">
+        <div class="contact-row"><span>📱</span><a href="tel:+17788580809">778-858-0809</a></div>
+        <div class="contact-row"><span>✉️</span><span style="color:rgba(255,255,255,.3);font-size:12px;font-style:italic;">Email coming soon</span></div>
+        <div class="contact-row"><span>📍</span>Surrey &amp; Langley, BC · Fraser Valley</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGAGEMENT CARDS -->
+  <section class="engage-section reveal">
+    <div class="engage-card engage-navy" style="border-radius:16px 16px 0 0;">
+      <div class="engage-inner">
+        <div>
+          <p class="engage-label" style="color:var(--lavender);">Looking for something specific?</p>
+          <h2 class="engage-title" style="color:#fff;">Don't see the <em style="color:var(--gold-lt);">right project</em> here?</h2>
+          <p class="engage-desc" style="color:rgba(255,255,255,.55);">New developments go fast and not everything makes it to public listings. Tell me what you're looking for and I'll find it personally.</p>
+        </div>
+        <div class="engage-cta">
+          <button class="btn btn-primary" onclick="openOv('leadModal');setFormProject('Custom Search')">Tell Me What You Need →</button>
+          <p class="engage-cta-note" style="color:rgba(255,255,255,.35);">Free · No obligation · Private</p>
+        </div>
+      </div>
+    </div>
+    <div class="engage-card engage-warm" style="border-radius:0 0 16px 16px;">
+      <div class="engage-inner">
+        <div>
+          <p class="engage-label" style="color:var(--gold-lt);">Exploring all your options?</p>
+          <h2 class="engage-title" style="color:#fff;">What about a <em style="color:var(--gold-lt);">newer home</em><br>that's move-in ready today?</h2>
+          <p class="engage-desc" style="color:rgba(255,255,255,.5);">Sometimes a 1–5 year old home offers the best of both worlds — nearly new finishes, no wait time, and room to negotiate.</p>
+        </div>
+        <div class="engage-cta">
+          <button class="btn btn-primary" onclick="openOv('leadModal');setFormProject('Resale/Newer Home Interest')">Show Me My Options →</button>
+          <p class="engage-cta-note" style="color:rgba(255,255,255,.3);">I'll personally curate options for you</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ── FOOTER ── -->
+</div><!-- /listings-wrap -->
+<footer class="footer">
+  <div class="footer-logo">Parnam</div>
+  <p class="footer-sub">Properties by Parnam · BC · Canada</p>
+  <div class="footer-links">
+    <a href="#listings">Listings</a>
+    <a href="#about">About</a>
+    <a href="javascript:openOv('leadModal')">Contact</a>
+  </div>
+  <p class="footer-copy">© 2026 Properties by Parnam. All rights reserved. Royal LePage Global Force Realty · All prices + GST · Subject to change · E&amp;OE</p>
+</footer>
+
+<!-- ── LEAD FORM MODAL ── -->
+<div class="overlay" id="leadModal" onclick="ovClick(event,'leadModal')">
+  <div class="modal">
+    <div class="modal-drag"></div>
+    <div class="modal-header">
+      <h3 class="modal-title">📩 Get in Touch</h3>
+      <button class="modal-close" onclick="closeOv('leadModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="leadFormWrap">
+        <div class="form-group"><label class="form-label">Full Name *</label><input class="form-input" id="fName" type="text" placeholder="e.g. John Smith"></div>
+        <div class="form-group"><label class="form-label">Phone Number *</label><input class="form-input" id="fPhone" type="tel" placeholder="604-xxx-xxxx" inputmode="tel"></div>
+        <div class="form-group"><label class="form-label">Email Address *</label><input class="form-input" id="fEmail" type="email" placeholder="your@email.com" inputmode="email"></div>
+        <div class="form-group"><label class="form-label">Interested In</label><select class="form-input" id="fProject"><option value="">Select a development…</option></select></div>
+        <div class="form-group"><label class="form-label">Best Time to Call</label>
+          <select class="form-input" id="fTime">
+            <option value="">— Any time is fine —</option>
+            <option>Morning (9am–12pm)</option><option>Afternoon (12pm–5pm)</option><option>Evening (5pm–8pm)</option><option>Weekends only</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Message (optional)</label><textarea class="form-input" id="fMessage" placeholder="e.g. Interested in 2-bed units, pre-sale pricing…"></textarea></div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="submitLead()">Send Message →</button>
+        <p style="font-size:11px;color:rgba(255,255,255,.3);text-align:center;margin-top:12px;">🔒 Your information is only shared with Parnam Singh, Realtor.</p>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon">🏡</div>
+        <h3 class="success-title">Message Sent!</h3>
+        <p class="success-msg">Parnam will be in touch with you shortly.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── DETAIL MODAL ── -->
+<div class="overlay" id="detailModal" onclick="ovClick(event,'detailModal')">
+  <div class="modal">
+    <div class="modal-drag"></div>
+    <div class="modal-header">
+      <h3 class="modal-title" id="detailTitle">Project Details</h3>
+      <button class="modal-close" onclick="closeOv('detailModal')">✕</button>
+    </div>
+    <div class="modal-body" id="detailBody"></div>
+  </div>
+</div>
+
+<!-- ── SAVED PANEL ── -->
+<div class="overlay" id="savedPanel" onclick="ovClick(event,'savedPanel')">
+  <div class="modal">
+    <div class="modal-drag"></div>
+    <div class="modal-header">
+      <h3 class="modal-title">❤ Saved Properties</h3>
+      <button class="modal-close" onclick="closeOv('savedPanel')">✕</button>
+    </div>
+    <div class="modal-body" id="savedBody"></div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+(function(){
+'use strict';
+
+/* ── EmailJS ── */
+try{emailjs.init('Q2l2_DTcQkCJMDAEs');}catch(e){}
+
+/* ── STATUS LABELS ── */
+const STATUS_LABELS = {
+  'move-in':'Move-In Ready','presale':'Pre-Sale',
+  'hard-hat':'🪖 Hard Hat Tours','coming-soon':'Coming Soon','selling-fast':'Selling Fast'
+};
+const STATUS_BADGE_CLASS = {
+  'move-in':'badge-status-movein','presale':'badge-status-presale',
+  'hard-hat':'badge-status-hardhat','coming-soon':'badge-status-comingsoon','selling-fast':'badge-status-sellingfast'
+};
+const ACCENT_COLORS = {
+  gold:'#C9A84C',green:'#3D6B5A',blue:'#2A4A6B',terra:'#8B4A3A',
+  charcoal:'#0E1245',purple:'#5A3A8B',teal:'#2A6B6B',navy:'#0E1245'
+};
+const TYPE_PILLS = [
+  {key:'all',icon:'🏘️',label:'All Types'},
+  {key:'Condo',icon:'🏢',label:'Condo'},
+  {key:'Townhome',icon:'🏠',label:'Townhome'},
+  {key:'Row Home',icon:'🏘️',label:'Row Home\nNo Strata'},
+  {key:'Detached',icon:'🏡',label:'Single\nFamily'},
+  {key:'Duplex',icon:'🏘️',label:'Duplex'},
+  {key:'Villa',icon:'🏰',label:'Villa /\nLuxury'},
+  {key:'Mixed',icon:'🏗️',label:'Mixed /\nCommunity'}
+];
+
+/* ── DATA ── */
+const DATA = [
+  {id:'portwood',name:'Portwood',dev:'Edgar Development · Rennie',city:'Port Coquitlam',region:'Coquitlam',
+   price:'',pwas:'',psave:'',sold:78,type:'Condo',beds:'',
+   status:'hard-hat',badge:'Pre-Sale',comp:'January 2027',gst:'',dep:'',
+   highlights:['Private Hard Hat Tours now booking — walk real finishes in person','78% sold — only select homes remain','Refined pricing with flexible tailored offers for early purchasers','Estimated completion January 2027'],
+   desc:'Hard hat tours are now available to walk real finishes. 78% sold with only select homes remaining. Estimated completion January 2027.',
+   cname:'Pavel Stepczynski · Rennie',phone:'778-858-0809',email:'pstepczynski@rennie.com',
+   hrs:'By appointment',date:'2026-04-04',color:'charcoal',images:[]},
+  {id:'lakecountry',name:'Lake Country Villas',dev:'Royal LePage Kelowna',city:'Lake Country (Okanagan)',region:'Okanagan',
+   price:'Call for pricing',pwas:'',psave:'',sold:82,type:'Villa',beds:'3–4 Bed',
+   status:'move-in',badge:'⚡ Last 1 Villa',comp:'Move-In Ready',gst:'',dep:'',
+   highlights:['Panoramic Okanagan Lake views from private deck','Quartz countertops · Bosch appliances · Smart tech throughout','Central A/C · HRV · Dual-zone heating','Minutes to wineries, beaches & Kelowna Airport','Only ONE move-in ready villa remains — presale also available'],
+   desc:'Stunning villas overlooking Okanagan Lake. The last move-in ready unit features premium finishes throughout and sweeping lake views.',
+   cname:'Brett Johnston',phone:'250-863-5399',email:'info@lakecountryvillas.ca',web:'https://lakecountryvillas.ca',
+   hrs:'Private appointments',date:'2026-04-04',color:'gold',images:[]},
+  {id:'parkave',name:'Park Avenue',dev:'Apcon Group · Novus Real Estate',city:'Yorkson, Langley',region:'Langley',
+   price:'$889,900 + GST',pwas:'',psave:'',sold:0,type:'Townhome',beds:'3 Bed / 3 Bed + Den',
+   status:'move-in',badge:'Selling Fast',comp:'Move-In Ready',gst:'',dep:'5% deposit',
+   highlights:['32 rooftop townhomes · 500+ sq ft rooftop patios','A/C + EV charger included · Fisher & Paykel appliances','Gas fireplace in every home · Side-by-side double garages','Show home open Sat & Sun 1–4 PM'],
+   desc:'Move-in ready rooftop townhomes in Langley\'s Yorkson neighbourhood. Features premium appliances and spacious private rooftop patios.',
+   cname:'Park Avenue Sales Team',email:'info@novusrealestate.ca',web:'https://apcongroup.ca/park-ave/',
+   hrs:'Sat & Sun 1–4 PM',date:'2026-04-03',color:'green',images:[]},
+  {id:'pierwest',name:'Pier West',dev:'Bosa Development · Rennie',city:'New Westminster',region:'New Westminster',
+   price:'From $593,900',pwas:'From $669,900',psave:'Up to $99K Off',sold:0,type:'Condo',beds:'1–3 Bed',
+   status:'move-in',badge:'Spring Sale',comp:'Move-In Ready',gst:'partial',dep:'',depBonus:'$5K on 1-bed · $10K on 2&3-bed',
+   highlights:['West Tower 1-bed from $595,900 (was $692,900)','East Tower 1-bed from $593,900 (was $669,900)','2-bed & 3-bed spring pricing available','Commission paid immediately on completed homes'],
+   desc:'Spring sale pricing in effect. Move-in ready condos in New Westminster with Quayside waterfront location.',
+   cname:'Laura Benitez · Rennie',phone:'778-858-0809',email:'lbenitez@rennie.com',web:'https://pier-west.com',
+   hrs:'Sat–Thu 12–5 PM',date:'2026-03-25',color:'blue',images:[]},
+  {id:'kinsley',name:'Kinsley',dev:'Intergulf Development',city:'Vancouver West Side',region:'Vancouver',
+   price:'From $694,900',pwas:'',psave:'',sold:0,type:'Condo',beds:'',
+   status:'move-in',badge:'',comp:'Move-In Ready',gst:'',dep:'',
+   highlights:['Move-in ready condos on coveted Vancouver West Side','Skip the pre-construction wait — brand-new living now','W 28th Ave & Yukon — central and well-connected'],
+   desc:'Brand-new move-in ready condos on the Vancouver West Side. Modern living at W 28th & Yukon.',
+   cname:'Kinsley Sales Team',email:'kinsley@intergulf.com',
+   hrs:'By appointment',date:'2026-03-26',color:'green',images:[]},
+  {id:'onyxivory',name:'Onyx & Ivory',dev:'',city:'Surrey',region:'Surrey',
+   price:'From $969,900',pwas:'From $1,119,900',psave:'$150K OFF',sold:0,type:'Townhome',beds:'3 Bed + Flex',
+   status:'move-in',badge:'GST Rebate',comp:'Move-In Ready',gst:'full',dep:'',
+   highlights:['~1,900 sq ft · Walk-out balcony · Gas BBQ · Built-in speakers','10–15% OFF + NO strata fees for 3 years (Phase One)','Fisher & Paykel appliances · Quartz double-waterfall islands','Central A/C · EV outlet · Double side-by-side garage','Phase Two presale now open'],
+   desc:'Phase One offers 10–15% off with no strata fees for 3 years. Premium townhomes in Surrey with high-end finishes throughout.',
+   cname:'Onyx & Ivory Sales Team',phone:'778-858-0809',email:'sales@onyxivory.ca',web:'https://onyxivory.ca',
+   hrs:'Daily 12–5 PM (exc. Fri)',date:'2026-03-18',color:'terra',images:[]},
+  {id:'mercer',name:'Mercer Village',dev:'',city:'Metro Vancouver (15 min to Van.)',region:'Surrey',
+   price:'From mid-$900Ks',pwas:'',psave:'5% OFF + GST',sold:0,type:'Townhome',beds:'3 Bed / 3 Bed + Den',
+   status:'move-in',badge:'Final 5 Homes',comp:'Move-In Ready',gst:'full',dep:'5% deposit',
+   highlights:['5-5-5 Promo: 5% off · 5% deposit · Limited time offer','All homes qualify for up to $50K GST rebate (Bill C-4)','KitchenAid appliances · Gas cooktop · 36" fridge · 11" island','Central A/C · 2-car garage + Level 2 EV outlet','Community park · play area · dog run · ~$0.22 PSF strata'],
+   desc:'Only 5 homes remain. 5-5-5 Promo: 5% discount, 5% deposit. Eligible for the full $50K GST rebate.',
+   cname:'Mercer Village Sales',phone:'778-858-0809',email:'sales@mercervillage.ca',web:'https://mercervillage.ca',
+   hrs:'Daily 12–5 PM (exc. Fri)',date:'2026-03-04',color:'gold',images:[]},
+  {id:'blacktail',name:'Blacktail',dev:'Private Developer',city:'Silver Valley, Maple Ridge',region:'Maple Ridge',
+   price:'From $999,000',pwas:'',psave:'',sold:0,type:'Mixed',beds:'3–4 Bed',
+   status:'presale',badge:'Grand Opening May 23',comp:'May 2026',gst:'',dep:'TBA – pricing mid-May',
+   highlights:['90 single-family homes · 10 duplexes · 1 triplex · 1 fourplex','Single-family homes approx. $1,299,000–$1,499,000','Duplex homes from approx. $999,000–$1,099,000','Floor plans: Ironwood (2,355 sq ft) · Magnolia (3,025 sq ft) · Lupine (2,955 sq ft)','Optional basement suite on all plans — up to 730 sq ft','Private VIP/Realtor appointments available in May'],
+   desc:'Master-planned community in Silver Valley, Maple Ridge, nestled alongside Anderson Creek Ravine. Grand Opening May 23rd with private VIP appointments prior.',
+   cname:'Blacktail Sales Team',
+   hrs:'VIP appointments May — booking link mid-April',date:'2026-04-08',color:'green',images:[]},
+  {id:'bromley',name:'Bromley',dev:'Leone Homes',city:'Langley',region:'Langley',
+   price:'From under $800K',pwas:'',psave:'',sold:0,type:'Townhome',beds:'3–4 Bed',
+   status:'presale',badge:'',comp:'2027',gst:'',dep:'1% to start',
+   highlights:['26-unit presale townhome community by Leone Homes','3 and 4 bedroom floor plans with modern finishes','Launching April 2026 — secure with just 1% deposit','Double garage · Private outdoor spaces'],
+   desc:'26-unit presale townhome community by Leone Homes in Langley. Features 3 and 4 bedroom floor plans. Secure with just 1% deposit.',
+   cname:'Leone Homes Sales',hrs:'By appointment',date:'2026-04-11',color:'gold',images:[]}
+];
+
+/* ── STATE ── */
+let activeType='all', activeStatus='all', activeRegion='all', sortMode='date-desc';
+let saved=[];
+try{saved=JSON.parse(localStorage.getItem('parnam_saved')||'[]');}catch(e){}
+
+/* ── INIT ── */
+function init(){
+  buildTypePills();
+  buildRegionChips();
+  populateFormSelect();
+  updateStats();
+  applyFilters();
+  initReveal();
+  initSwipeToClose();
+}
+
+/* ── BUILD TYPE PILLS ── */
+function buildTypePills(){
+  const wrap=document.getElementById('typePills');
+  wrap.innerHTML=TYPE_PILLS.map(tp=>{
+    const cnt = tp.key==='all' ? DATA.length : DATA.filter(p=>p.type===tp.key).length;
+    return `<button class="type-pill${activeType===tp.key?' active':''}" onclick="setType('${tp.key}',this)">
+      <span class="type-pill-icon">${tp.icon}</span>
+      <span class="type-pill-label">${tp.label}</span>
+      <span class="type-pill-count">${cnt}</span>
+    </button>`;
+  }).join('');
+}
+
+/* ── BUILD REGION CHIPS ── */
+function buildRegionChips(){
+  const regions=[...new Set(DATA.map(p=>p.region))].sort();
+  const wrap=document.getElementById('regionChips');
+  const existing=wrap.querySelector('[data-region="all"]').outerHTML;
+  wrap.innerHTML=existing+regions.map(r=>`<button class="chip region-chip" data-region="${r}" onclick="setRegion('${r}',this)">${r} (${DATA.filter(p=>p.region===r).length})</button>`).join('');
+}
+
+/* ── UPDATE STATS ── */
+function updateStats(){
+  document.getElementById('statTotal').textContent=DATA.length;
+  document.getElementById('statMovein').textContent=DATA.filter(p=>p.status==='move-in').length;
+  document.getElementById('statPresale').textContent=DATA.filter(p=>['presale','hard-hat','coming-soon'].includes(p.status)).length;
+  document.getElementById('statRegions').textContent=[...new Set(DATA.map(p=>p.region))].size;
+}
+
+/* ── FILTER SETTERS ── */
+function setType(t,el){
+  activeType=t;
+  document.querySelectorAll('.type-pill').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  applyFilters();
+}
+function setStatus(s,el){
+  activeStatus=s;
+  document.querySelectorAll('#statusChips .chip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  applyFilters();
+}
+function setRegion(r,el){
+  activeRegion=r;
+  document.querySelectorAll('#regionChips .chip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  applyFilters();
+}
+window.setType=setType; window.setStatus=setStatus; window.setRegion=setRegion;
+
+/* ── APPLY FILTERS & RENDER ── */
+function applyFilters(){
+  const q=(document.getElementById('searchInput').value||'').toLowerCase();
+  sortMode=document.getElementById('sortSel').value;
+
+  let list=[...DATA];
+  if(activeType!=='all') list=list.filter(p=>p.type===activeType);
+  if(activeStatus==='move-in') list=list.filter(p=>p.status==='move-in');
+  else if(activeStatus==='presale') list=list.filter(p=>['presale','hard-hat','coming-soon'].includes(p.status));
+  else if(activeStatus==='gst') list=list.filter(p=>!!p.gst);
+  if(activeRegion!=='all') list=list.filter(p=>p.region===activeRegion);
+  if(q) list=list.filter(p=>[p.name,p.dev,p.city,p.region,...p.highlights].join(' ').toLowerCase().includes(q));
+
+  list.sort((a,b)=>{
+    if(sortMode==='date-desc') return b.date.localeCompare(a.date);
+    if(sortMode==='date-asc') return a.date.localeCompare(b.date);
+    if(sortMode==='name') return a.name.localeCompare(b.name);
+    const pa=parseInt((a.price||'').replace(/\D/g,''))||9e9;
+    const pb=parseInt((b.price||'').replace(/\D/g,''))||9e9;
+    return sortMode==='price-asc'?pa-pb:pb-pa;
+  });
+
+  document.getElementById('resultsCount').innerHTML=`<strong>${list.length}</strong> development${list.length!==1?'s':''} found`;
+  renderCards(list);
+}
+window.applyFilters=applyFilters;
+
+/* ── RENDER CARDS ── */
+function renderCards(list){
+  const grid=document.getElementById('cardsGrid');
+  if(!list.length){
+    grid.innerHTML=`<div class="empty"><div class="empty-icon">🔍</div><h3 class="empty-title">No projects found</h3><p class="empty-sub">Try adjusting your filters or search.</p></div>`;
+    return;
+  }
+  grid.innerHTML=list.map(p=>buildCard(p)).join('');
+  grid.querySelectorAll('.card').forEach((el,i)=>{
+    el.style.opacity='0';
+    el.style.transform='translateY(20px)';
+    setTimeout(()=>{
+      el.style.transition='opacity .5s ease, transform .5s ease';
+      el.style.opacity='1';
+      el.style.transform='translateY(0)';
+    }, 40 + i*55);
+  });
+}
+
+/* ── BUILD CARD ── */
+function buildCard(p){
+  const COLORS={gold:'#C9A84C',green:'#3D6B5A',blue:'#2A4A6B',terra:'#8B4A3A',charcoal:'#0E1245',navy:'#0E1245'};
+  const accent=COLORS[p.color]||COLORS.gold;
+  const isSaved=saved.includes(p.id);
+  const daysSince=p.date?(Date.now()-new Date(p.date+'T12:00:00'))/86400000:999;
+  const isNew=daysSince<14;
+  const dateStr=p.date?new Date(p.date+'T12:00:00').toLocaleDateString('en-CA',{month:'short',day:'numeric'}):'';
+  const PCLS={'move-in':'p-movein','presale':'p-presale','hard-hat':'p-hardhat','coming-soon':'p-comingsoon','selling-fast':'p-sellingfast'};
+  const PLBL={'move-in':'Move-In Ready','presale':'Pre-Sale','hard-hat':'🪖 Hard Hat Tours','coming-soon':'Coming Soon','selling-fast':'Selling Fast'};
+  const pillCls=PCLS[p.status]||'p-presale';
+  const pillLbl=PLBL[p.status]||p.status;
+  const imgHtml=(p.images&&p.images.length)
+    ?`<img src="${p.images[0]}" alt="${p.name}" loading="lazy">`
+    :`<div class="card-img-placeholder"><span class="card-img-ph-icon">🏗️</span><span class="card-img-ph-text">${p.city}</span></div>`;
+  const ribbon=p.badge?`<span class="card-ribbon">${p.badge}</span>`:(isNew?`<span class="card-ribbon">New</span>`:'');
+  const specs=[];
+  if(p.beds)specs.push(`<span class="card-spec">🛏 ${p.beds}</span>`);
+  if(p.type)specs.push(`<span class="card-spec">🏠 ${p.type}</span>`);
+  if(p.comp&&p.comp.toLowerCase()!=='move-in ready')specs.push(`<span class="card-spec">🗓 ${p.comp}</span>`);
+  const priceHtml=p.price?`<div class="card-price-block">
+    <span class="card-price">${p.price}</span>
+    ${(p.pwas&&!p.psave)?`<span class="card-price-was">${p.pwas}</span>`:''}
+    ${(p.psave&&!p.pwas)?`<span class="card-price-save">${p.psave}</span>`:''}
+  </div>`:'';
+  const promo=(p.pwas&&p.psave)?`<div class="card-promo">💰 <strong>${p.psave}</strong> · Was ${p.pwas}</div>`:'';
+  const gst=p.gst?`<div class="card-gst">🏛️ GST Rebate — save <strong>up to $50K</strong></div>`:'';
+  const dep=p.dep?`<div class="card-dep">🔑 ${p.dep} deposit</div>`:'';
+  const soldBar=p.sold>0?`<div class="card-sold">
+    <div class="card-sold-hdr"><span>Sold</span><span>${p.sold}%</span></div>
+    <div class="card-sold-bar"><div class="card-sold-fill" style="width:${p.sold}%"></div></div>
+  </div>`:'';
+  const hls=(p.highlights&&p.highlights.length)?`<div class="card-hls">
+    ${p.highlights.slice(0,3).map(hl=>`<div class="card-hl"><span class="card-hl-dot">◆</span>${hl}</div>`).join('')}
+    ${p.highlights.length>3?`<div class="card-hl-more">+${p.highlights.length-3} more…</div>`:''}
+  </div>`:'';
+  return `<div class="card" onclick="openDetail('${p.id}')">
+  <div class="card-img">
+    ${imgHtml}
+    <span class="card-status-pill ${pillCls}">${pillLbl}</span>
+    ${ribbon}
+    <button class="card-savebtn" id="save-${p.id}" onclick="event.stopPropagation();toggleSave('${p.id}')">${isSaved?'❤':'🤍'}</button>
+  </div>
+  <div class="accent-bar" style="background:${accent};"></div>
+  <div class="card-body">
+    <div class="card-meta">
+      <span class="card-region">📍 ${p.region}</span>
+      ${dateStr?`<span class="card-datetag">${dateStr}</span>`:''}
+    </div>
+    <h3 class="card-title">${p.name}</h3>
+    ${p.dev?`<div class="card-dev">${p.dev}</div>`:''}
+    ${priceHtml}
+    ${specs.length?`<div class="card-specs">${specs.join('')}</div>`:''}
+    ${dep}${promo}${gst}${soldBar}${hls}
+    <div class="card-footer">
+      <div class="card-cinfo">
+        ${p.cname?`<div class="card-cname">${p.cname}</div>`:''}
+        ${p.hrs?`<div>🕐 ${p.hrs}</div>`:''}
+      </div>
+      <div onclick="event.stopPropagation()">
+        <button class="cta-p" onclick="openLead('${p.id}')">📩 Get VIP Access</button>
+        <div class="cta-row2">
+          <button class="cta-s" onclick="openLead('${p.id}')">📋 Floor Plans</button>
+          <button class="cta-o" onclick="openOffer('${p.id}')">💰 Make Offer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`;
+}
+
+/* ── DETAIL MODAL ── */
+function openDetail(id){
+  const p=DATA.find(x=>x.id===id);
+  if(!p)return;
+  document.getElementById('detailTitle').textContent=p.name;
+  const imgHtml=p.images&&p.images.length?`<img src="${p.images[0]}" alt="${p.name}">`:`<div class="modal-img-ph">${p.name.slice(0,2).toUpperCase()}</div>`;
+  document.getElementById('detailBody').innerHTML=`
+<div class="modal-img">${imgHtml}</div>
+<div class="detail-grid">
+  <div class="detail-item"><div class="d-label">City</div><div class="d-val">${p.city}</div></div>
+  <div class="detail-item"><div class="d-label">Type</div><div class="d-val">${p.type||'—'}</div></div>
+  <div class="detail-item"><div class="d-label">Price</div><div class="d-val">${p.price||'Contact for pricing'}</div></div>
+  <div class="detail-item"><div class="d-label">Bedrooms</div><div class="d-val">${p.beds||'—'}</div></div>
+  <div class="detail-item"><div class="d-label">Status</div><div class="d-val">${STATUS_LABELS[p.status]||p.status}</div></div>
+  <div class="detail-item"><div class="d-label">Deposit</div><div class="d-val">${p.dep||'TBA'}</div></div>
+  ${p.comp?`<div class="detail-item"><div class="d-label">Completion</div><div class="d-val">${p.comp}</div></div>`:''}
+  ${p.dev?`<div class="detail-item"><div class="d-label">Developer</div><div class="d-val">${p.dev}</div></div>`:''}
+</div>
+${p.desc?`<p class="detail-desc">${p.desc}</p>`:''}
+<div class="modal-actions">
+  <button class="btn btn-primary" onclick="closeOv('detailModal');openLead('${p.id}')">📩 Inquire Now</button>
+  <button class="btn btn-outline" onclick="toggleSave('${p.id}');this.textContent=saved.includes('${p.id}')?'❤ Saved':'🤍 Save'">${saved.includes(p.id)?'❤ Saved':'🤍 Save'}</button>
+</div>`;
+  openOv('detailModal');
+}
+window.openDetail=openDetail;
+
+/* ── SAVE ── */
+function toggleSave(id){
+  const idx=saved.indexOf(id);
+  if(idx===-1){saved.push(id);showToast('Property saved! ❤');}
+  else{saved.splice(idx,1);showToast('Removed from saved.');}
+  try{localStorage.setItem('parnam_saved',JSON.stringify(saved));}catch(e){}
+  const btn=document.getElementById('save-'+id);
+  if(btn)btn.textContent=saved.includes(id)?'❤':'🤍';
+  // re-render saved panel if open
+  if(document.getElementById('savedPanel').classList.contains('open')) renderSaved();
+}
+window.toggleSave=toggleSave;
+
+/* ── FORM ── */
+function populateFormSelect(){
+  const sel=document.getElementById('fProject');
+  DATA.forEach(p=>{const o=document.createElement('option');o.value=p.name;o.textContent=p.name+' — '+p.city;sel.appendChild(o);});
+  ['General Inquiry','Custom Search','Resale/Newer Home Interest'].forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;sel.appendChild(o);});
+}
+function setFormProject(name){
+  const sel=document.getElementById('fProject');
+  for(let o of sel.options){if(o.value===name||o.value.startsWith(name)){sel.value=o.value;break;}}
+}
+window.setFormProject=setFormProject;
+function openLead(id){
+  const p=DATA.find(x=>x.id===id);
+  if(p)setFormProject(p.name);
+  openOv('leadModal');
+}
+window.openLead=openLead;
+function submitLead(){
+  const name=document.getElementById('fName').value.trim();
+  const phone=document.getElementById('fPhone').value.trim();
+  const email=document.getElementById('fEmail').value.trim();
+  if(!name||!phone){showToast('Please fill in your name and phone.');return;}
+  const params={from_name:name,phone:phone,email:email||'N/A',project:document.getElementById('fProject').value||'General',message:document.getElementById('fMessage').value||'No message',call_time:document.getElementById('fTime').value||'Any time'};
+  try{emailjs.send('service_iaisg1o','template_ajg71qg',params);}catch(e){}
+  document.getElementById('leadFormWrap').style.display='none';
+  document.getElementById('formSuccess').classList.add('show');
+  showToast('Message sent! Parnam will reach out soon. 🏡');
+  setTimeout(()=>{
+    closeOv('leadModal');
+    setTimeout(()=>{
+      document.getElementById('leadFormWrap').style.display='block';
+      document.getElementById('formSuccess').classList.remove('show');
+      ['fName','fEmail','fPhone','fMessage'].forEach(id=>{document.getElementById(id).value='';});
+    },500);
+  },3200);
+}
+window.submitLead=submitLead;
+
+/* ── SAVED PANEL ── */
+function renderSaved(){
+  const body=document.getElementById('savedBody');
+  if(!saved.length){body.innerHTML='<div class="saved-empty">No saved properties yet.<br>Tap 🤍 on any listing to save it.</div>';return;}
+  body.innerHTML=saved.map(id=>{
+    const p=DATA.find(x=>x.id===id);
+    if(!p)return '';
+    const img=p.images&&p.images.length?`<img src="${p.images[0]}" alt="${p.name}">`:p.name.slice(0,2).toUpperCase();
+    return `<div class="saved-item">
+      <div class="saved-thumb">${img}</div>
+      <div class="saved-info"><div class="saved-name">${p.name}</div><div class="saved-sub">${p.city} · ${p.price||'Contact for pricing'}</div></div>
+      <button class="saved-remove" onclick="toggleSave('${p.id}')">✕</button>
+    </div>`;
+  }).join('');
+}
+
+/* ── OVERLAY ── */
+function openOv(id){
+  if(id==='savedPanel')renderSaved();
+  document.getElementById(id).classList.add('open');
+}
+function closeOv(id){document.getElementById(id).classList.remove('open');}
+function ovClick(e,id){if(e.target.id===id)closeOv(id);}
+window.openOv=openOv;window.closeOv=closeOv;window.ovClick=ovClick;
+
+/* ── TOAST ── */
+let toastTimer;
+function showToast(msg){
+  clearTimeout(toastTimer);
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+/* ── REVEAL ── */
+const revealObserver=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');revealObserver.unobserve(e.target);}
+  });
+},{threshold:.07,rootMargin:'0px 0px -30px 0px'});
+function initReveal(){
+  document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+}
+
+/* ── SWIPE TO CLOSE ── */
+function initSwipeToClose(){
+  let startY=0;
+  document.addEventListener('touchstart',e=>{startY=e.touches[0].clientY;},{passive:true});
+  document.addEventListener('touchend',e=>{
+    if(e.changedTouches[0].clientY-startY>80){
+      document.querySelectorAll('.overlay.open').forEach(el=>el.classList.remove('open'));
+    }
+  },{passive:true});
+}
+
+/* ── OFFER MODAL ── */
+function openOffer(id){
+  const p=DATA.find(x=>x.id===id)||customListings.find(x=>x.id===id);
+  if(!p)return;
+  document.getElementById('offerProjName').textContent=p.name;
+  document.getElementById('offerProjSub').textContent=p.city+(p.price?' · '+p.price:'');
+  document.getElementById('offerFormWrap')._pid=id;
+  document.getElementById('offerFormWrap').style.display='block';
+  document.getElementById('offerSuccess').style.display='none';
+  openOv('offerModal');
+}
+window.openOffer=openOffer;
+function submitOffer(){
+  const name=document.getElementById('ofName').value.trim();
+  const phone=document.getElementById('ofPhone').value.trim();
+  const price=document.getElementById('ofPrice').value.trim();
+  if(!name||!phone||!price){showToast('Please fill in name, phone and offer price.');return;}
+  const id=document.getElementById('offerFormWrap')._pid;
+  const p=DATA.find(x=>x.id===id)||customListings.find(x=>x.id===id)||{name:'Unknown'};
+  const msg=`💰 OFFER INTEREST\nProject: ${p.name}\nOffer Price: ${price}\nSubjects: ${document.getElementById('ofSubjects').value}\nCompletion: ${document.getElementById('ofCompletion').value}\nNotes: ${document.getElementById('ofNotes').value||'None'}`;
+  try{emailjs.send('service_iaisg1o','template_ajg71qg',{from_name:name,phone:phone,email:document.getElementById('ofEmail').value||'N/A',project:p.name,message:msg,call_time:'ASAP'});}catch(e){}
+  document.getElementById('offerFormWrap').style.display='none';
+  document.getElementById('offerSuccess').style.display='block';
+  showToast('Offer submitted! Parnam will be in touch. 🤝');
+  setTimeout(()=>{closeOv('offerModal');['ofName','ofPhone','ofEmail','ofPrice','ofNotes'].forEach(x=>{document.getElementById(x).value='';});},3200);
+}
+window.submitOffer=submitOffer;
+
+/* ── ADMIN PANEL ── */
+const ADMIN_PIN='2210';
+let isAdmin=false;
+let customListings=[];
+try{customListings=JSON.parse(localStorage.getItem('parnam_custom')||'[]');}catch(e){}
+
+function getAllListings(){
+  const cIds=customListings.map(c=>c.id);
+  return [...customListings,...DATA.filter(d=>!cIds.includes(d.id))];
+}
+window.getAllListings=getAllListings;
+
+function checkAdmin(){
+  if(isAdmin){openAdmin();return;}
+  document.getElementById('pinOverlay').classList.add('open');
+  setTimeout(()=>document.getElementById('pinInput').focus(),80);
+}
+window.checkAdmin=checkAdmin;
+
+function verifyPin(){
+  const v=document.getElementById('pinInput').value;
+  if(v===ADMIN_PIN){
+    isAdmin=true;
+    document.getElementById('pinOverlay').classList.remove('open');
+    document.getElementById('pinInput').value='';
+    document.getElementById('adminBtn').classList.add('unlocked');
+    openAdmin();
+  } else {
+    const inp=document.getElementById('pinInput');
+    inp.classList.add('shake');
+    document.getElementById('pinErr').style.display='block';
+    inp.value='';
+    setTimeout(()=>inp.classList.remove('shake'),400);
+  }
+}
+window.verifyPin=verifyPin;
+
+function openAdmin(){
+  document.getElementById('adminOverlay').classList.add('open');
+  renderAdminList();
+}
+function closeAdmin(){document.getElementById('adminOverlay').classList.remove('open');}
+window.closeAdmin=closeAdmin;
+
+function apTab(name,el){
+  document.querySelectorAll('.ap-tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.ap-sec').forEach(s=>s.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('ap-'+name).classList.add('on');
+}
+window.apTab=apTab;
+
+function renderAdminList(){
+  const all=getAllListings();
+  const el=document.getElementById('apList');
+  if(!all.length){el.innerHTML='<p style="color:rgba(255,255,255,.3);font-size:14px;text-align:center;padding:30px;">No listings yet.</p>';return;}
+  const COLORS={gold:'#C9A84C',green:'#3D6B5A',blue:'#2A4A6B',terra:'#8B4A3A',charcoal:'#0E1245',navy:'#0E1245'};
+  el.innerHTML=all.map(p=>{
+    const dot=COLORS[p.color]||COLORS.gold;
+    const isCustom=!!customListings.find(c=>c.id===p.id);
+    return `<div class="al-row">
+      <div class="al-dot" style="background:${dot}"></div>
+      <div class="al-info">
+        <div class="al-name">${p.name}</div>
+        <div class="al-sub">${p.city} · ${p.price||'Contact for pricing'} · ${isCustom?'<span style="color:var(--gold)">Custom</span>':'Seed'}</div>
+      </div>
+      <div class="al-btns">
+        <button class="al-btn al-edit" onclick="apEdit('${p.id}')">✏️ Edit</button>
+        ${isCustom?`<button class="al-btn al-del" onclick="apDel('${p.id}')">✕</button>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+window.renderAdminList=renderAdminList;
+
+function apEdit(id){
+  const all=getAllListings();
+  const p=all.find(x=>x.id===id);
+  if(!p)return;
+  document.getElementById('apEditId').value=p.id;
+  const F=(i,v)=>{const el=document.getElementById(i);if(el)el.value=v||'';};
+  F('af-name',p.name);F('af-dev',p.dev);F('af-city',p.city);F('af-region',p.region);
+  F('af-price',p.price);F('af-pwas',p.pwas);F('af-psave',p.psave);F('af-dep',p.dep);
+  F('af-type',p.type);F('af-beds',p.beds);F('af-status',p.status);F('af-badge',p.badge);
+  F('af-comp',p.comp);F('af-gst',p.gst);F('af-cname',p.cname);F('af-phone',p.phone);
+  F('af-email',p.email);F('af-web',p.web);F('af-hrs',p.hrs);
+  F('af-date',p.date||new Date().toISOString().slice(0,10));F('af-color',p.color||'gold');
+  F('af-img',(p.images&&p.images.length)?p.images[0]:'');
+  showImgPreview((p.images&&p.images.length)?p.images[0]:'');
+  document.getElementById('af-highlights').value=(p.highlights||[]).join('\n');
+  document.getElementById('af-desc').value=p.desc||'';
+  apTab('manual',document.querySelectorAll('.ap-tab')[1]);
+}
+window.apEdit=apEdit;
+
+function apClear(){
+  document.getElementById('apEditId').value='';
+  ['af-name','af-dev','af-city','af-price','af-pwas','af-psave','af-dep','af-beds',
+   'af-badge','af-comp','af-cname','af-phone','af-email','af-web','af-hrs','af-highlights','af-desc'].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.value='';
+  });
+  const r=document.getElementById('af-region');if(r)r.value='Langley';
+  const s=document.getElementById('af-status');if(s)s.value='presale';
+  const g=document.getElementById('af-gst');if(g)g.value='';
+  const t=document.getElementById('af-type');if(t)t.value='';
+  const c=document.getElementById('af-color');if(c)c.value='gold';
+  const d=document.getElementById('af-date');if(d)d.value=new Date().toISOString().slice(0,10);
+  const img=document.getElementById('af-img');if(img)img.value='';
+  showImgPreview('');
+}
+window.apClear=apClear;
+
+function apSave(){
+  const name=document.getElementById('af-name').value.trim();
+  const city=document.getElementById('af-city').value.trim();
+  if(!name||!city){showToast('Project name and city are required.');return;}
+  const editId=document.getElementById('apEditId').value;
+  const highlights=document.getElementById('af-highlights').value.split('\n').map(l=>l.trim()).filter(Boolean);
+  const listing={
+    id:editId||('c_'+Date.now().toString(36)),name,city,
+    dev:document.getElementById('af-dev').value.trim(),
+    region:document.getElementById('af-region').value,
+    price:document.getElementById('af-price').value.trim(),
+    pwas:document.getElementById('af-pwas').value.trim(),
+    psave:document.getElementById('af-psave').value.trim(),
+    dep:document.getElementById('af-dep').value.trim(),
+    type:document.getElementById('af-type').value,
+    beds:document.getElementById('af-beds').value.trim(),
+    status:document.getElementById('af-status').value,
+    badge:document.getElementById('af-badge').value.trim(),
+    comp:document.getElementById('af-comp').value.trim(),
+    gst:document.getElementById('af-gst').value,
+    highlights,desc:document.getElementById('af-desc').value.trim(),
+    cname:document.getElementById('af-cname').value.trim(),
+    phone:document.getElementById('af-phone').value.trim(),
+    email:document.getElementById('af-email').value.trim(),
+    web:document.getElementById('af-web').value.trim(),
+    hrs:document.getElementById('af-hrs').value.trim(),
+    date:document.getElementById('af-date').value||new Date().toISOString().slice(0,10),
+    color:document.getElementById('af-color').value,
+    sold:0,images:(function(){const u=document.getElementById('af-img').value.trim();return u?[u]:[];})()
+  };
+  const idx=customListings.findIndex(c=>c.id===editId);
+  if(idx>=0)customListings[idx]=listing; else customListings.unshift(listing);
+  try{localStorage.setItem('parnam_custom',JSON.stringify(customListings));}catch(e){}
+  applyFilters();
+  buildRegionChips();
+  updateStats();
+  buildTypePills();
+  showToast(editId?'✅ Listing updated!':'✅ New listing added!');
+  apTab('listings',document.querySelectorAll('.ap-tab')[0]);
+  renderAdminList();
+  apClear();
+}
+window.apSave=apSave;
+
+function apDel(id){
+  if(!confirm('Remove this listing?'))return;
+  customListings=customListings.filter(c=>c.id!==id);
+  try{localStorage.setItem('parnam_custom',JSON.stringify(customListings));}catch(e){}
+  renderAdminList();applyFilters();buildRegionChips();updateStats();
+  showToast('Listing removed.');
+}
+window.apDel=apDel;
+
+/* Patch applyFilters to use merged data */
+const _applyOrig=applyFilters;
+function applyFilters(){
+  const q=(document.getElementById('searchInput').value||'').toLowerCase();
+  const sort=document.getElementById('sortSel').value;
+  let list=[...getAllListings()];
+  if(activeType!=='all')list=list.filter(p=>p.type===activeType);
+  if(activeStatus==='move-in')list=list.filter(p=>p.status==='move-in');
+  else if(activeStatus==='presale')list=list.filter(p=>['presale','hard-hat','coming-soon'].includes(p.status));
+  else if(activeStatus==='gst')list=list.filter(p=>!!p.gst);
+  if(activeRegion!=='all')list=list.filter(p=>p.region===activeRegion);
+  if(q)list=list.filter(p=>[p.name,p.dev,p.city,p.region,...(p.highlights||[])].join(' ').toLowerCase().includes(q));
+  list.sort((a,b)=>{
+    if(sort==='date-desc')return b.date.localeCompare(a.date);
+    if(sort==='date-asc')return a.date.localeCompare(b.date);
+    if(sort==='name')return a.name.localeCompare(b.name);
+    const pa=parseInt((a.price||'').replace(/\D/g,''))||9e9;
+    const pb=parseInt((b.price||'').replace(/\D/g,''))||9e9;
+    return sort==='price-asc'?pa-pb:pb-pa;
+  });
+  document.getElementById('resultsCount').innerHTML=`<strong>${list.length}</strong> development${list.length!==1?'s':''} found`;
+  renderCards(list);
+}
+window.applyFilters=applyFilters;
+
+/* Patch updateStats to use merged data */
+const _updateStatsOrig=updateStats;
+function updateStats(){
+  const all=getAllListings();
+  document.getElementById('statTotal').textContent=all.length;
+  document.getElementById('statMovein').textContent=all.filter(p=>p.status==='move-in').length;
+  document.getElementById('statPresale').textContent=all.filter(p=>['presale','hard-hat','coming-soon'].includes(p.status)).length;
+  document.getElementById('statRegions').textContent=[...new Set(all.map(p=>p.region))].size;
+}
+window.updateStats=updateStats;
+
+/* Patch buildRegionChips to use merged data */
+const _buildRegionOrig=buildRegionChips;
+function buildRegionChips(){
+  const all=getAllListings();
+  const regions=[...new Set(all.map(p=>p.region))].sort();
+  const wrap=document.getElementById('regionChips');
+  wrap.innerHTML=`<button class="chip region-chip${activeRegion==='all'?' on':''}" onclick="setRegion('all',this)">All Regions</button>`
+    +regions.map(r=>`<button class="chip region-chip${activeRegion===r?' on':''}" onclick="setRegion('${r}',this)">${r} (${all.filter(p=>p.region===r).length})</button>`).join('');
+}
+window.buildRegionChips=buildRegionChips;
+
+/* ── PDF IMPORT ── */
+const EXTRACT_PROMPT=`Extract all real estate listing info from this document. Return ONLY valid JSON with these keys (empty string if not found):
+{"name":"","dev":"","city":"","region":"","price":"","pwas":"","psave":"","dep":"","type":"","beds":"","status":"presale","badge":"","comp":"","gst":"","highlights":[],"desc":"","cname":"","phone":"","email":"","web":"","hrs":"","color":"gold"}
+status must be one of: move-in, presale, hard-hat, coming-soon, selling-fast
+type must be one of: Condo, Townhome, Row Home, Detached, Duplex, Villa, Mixed
+highlights: array of 3-6 key selling points. Return ONLY the JSON, nothing else.`;
+
+async function handlePdf(input){
+  const file=input.files[0]; if(!file)return;
+  const st=document.getElementById('pdfStatus');
+  const pb=document.getElementById('pdfPreviewBtn');
+  st.className='imp-status loading';
+  st.innerHTML='<span class="spin"></span> Scanning with AI — please wait 15–20 seconds…';
+  pb.style.display='none';
+  try{
+    const b64=await fileToB64(file);
+    const isPdf=file.type==='application/pdf';
+    const content=isPdf
+      ?[{type:'document',source:{type:'base64',media_type:'application/pdf',data:b64.split(',')[1]}},{type:'text',text:EXTRACT_PROMPT}]
+      :[{type:'image',source:{type:'base64',media_type:file.type,data:b64.split(',')[1]}},{type:'text',text:EXTRACT_PROMPT}];
+    const result=await claudeExtract(content);
+    apFillForm(result);
+    st.className='imp-status ok';
+    st.innerHTML='✅ Details extracted! Click below to review and save.';
+    pb.style.display='block';
+    input.value='';
+  }catch(err){
+    st.className='imp-status err';
+    st.innerHTML='❌ '+( err.message||'Could not extract')+' — try manual entry instead.';
+  }
+}
+window.handlePdf=handlePdf;
+
+/* ── URL IMPORT ── */
+const URL_PROMPT=`Visit this real estate listing URL and extract all project info. Return ONLY valid JSON:
+{"name":"","dev":"","city":"","region":"","price":"","pwas":"","psave":"","dep":"","type":"","beds":"","status":"presale","badge":"","comp":"","gst":"","highlights":[],"desc":"","cname":"","phone":"","email":"","web":"","hrs":"","color":"gold"}
+URL: `;
+
+async function handleUrl(){
+  const url=document.getElementById('urlField').value.trim();
+  if(!url||!url.startsWith('http')){showToast('Enter a valid URL starting with https://');return;}
+  const btn=document.getElementById('urlGoBtn');
+  const st=document.getElementById('urlStatus');
+  const pb=document.getElementById('urlPreviewBtn');
+  btn.disabled=true; btn.innerHTML='<span class="spin"></span>';
+  st.className='imp-status loading';
+  st.innerHTML='<span class="spin"></span> Fetching and extracting — please wait…';
+  pb.style.display='none';
+  try{
+    const result=await claudeExtract([{type:'text',text:URL_PROMPT+url}]);
+    apFillForm(result);
+    st.className='imp-status ok';
+    st.innerHTML='✅ Details extracted! Click below to review and save.';
+    pb.style.display='block';
+  }catch(err){
+    st.className='imp-status err';
+    st.innerHTML='❌ '+(err.message||'Could not fetch page')+' — try manual entry.';
+  }
+  btn.disabled=false; btn.innerHTML='Extract';
+}
+window.handleUrl=handleUrl;
+
+async function claudeExtract(messages){
+  const resp=await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:messages}]})
+  });
+  if(!resp.ok)throw new Error('API error '+resp.status);
+  const data=await resp.json();
+  const text=data.content.map(c=>c.text||'').join('').replace(/```json|```/g,'').trim();
+  try{return JSON.parse(text);}catch(e){throw new Error('Could not parse AI response. Try manual entry.');}
+}
+
+function apFillForm(p){
+  const F=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v||'';};
+  F('apEditId','');
+  F('af-name',p.name);F('af-dev',p.dev);F('af-city',p.city);F('af-region',p.region||'Langley');
+  F('af-price',p.price);F('af-pwas',p.pwas);F('af-psave',p.psave);F('af-dep',p.dep);
+  F('af-type',p.type);F('af-beds',p.beds);F('af-status',p.status||'presale');
+  F('af-badge',p.badge);F('af-comp',p.comp);F('af-gst',p.gst);
+  F('af-cname',p.cname);F('af-phone',p.phone);F('af-email',p.email);
+  F('af-web',p.web||'');F('af-hrs',p.hrs);F('af-color',p.color||'gold');
+  F('af-date',new Date().toISOString().slice(0,10));
+  document.getElementById('af-highlights').value=(p.highlights||[]).join('\n');
+  document.getElementById('af-desc').value=p.desc||'';
+}
+
+function fileToB64(file){
+  return new Promise((res,rej)=>{
+    const r=new FileReader();
+    r.onload=()=>res(r.result);
+    r.onerror=()=>rej(new Error('Could not read file'));
+    r.readAsDataURL(file);
+  });
+}
+
+/* ── IMAGE PREVIEW ── */
+function showImgPreview(url){
+  const wrap=document.getElementById('af-img-preview');
+  if(!wrap)return;
+  if(!url){wrap.style.display='none';wrap.innerHTML='';return;}
+  wrap.style.display='block';
+  wrap.innerHTML=`<img src="${url}" style="width:100%;max-height:180px;object-fit:cover;display:block;" onerror="this.parentElement.innerHTML='<p style=\\'color:#fca5a5;font-size:12px;padding:12px;\\'>⚠️ Could not load image. Check the URL.</p>'">`;
+}
+/* Live preview on typing */
+document.addEventListener('DOMContentLoaded',()=>{
+  const imgInp=document.getElementById('af-img');
+  if(imgInp){
+    let debounce;
+    imgInp.addEventListener('input',()=>{
+      clearTimeout(debounce);
+      debounce=setTimeout(()=>showImgPreview(imgInp.value.trim()),600);
+    });
+  }
+});
+
+/* Escape key closes pin/admin */
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    document.getElementById('pinOverlay').classList.remove('open');
+    closeAdmin();
+  }
+});
+
+/* ── RUN ── */
+init();
+
+})();
+</script>
+
+<!-- ── OFFER MODAL ── -->
+<div class="overlay" id="offerModal" onclick="if(event.target===this)closeOv('offerModal')">
+  <div class="modal">
+    <div class="modal-drag"></div>
+    <div class="modal-header">
+      <h3 class="modal-title">💰 Make an Offer</h3>
+      <button class="modal-close" onclick="closeOv('offerModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="offerFormWrap">
+        <div class="offer-proj">
+          <div class="offer-proj-lbl">Making offer on</div>
+          <div class="offer-proj-name" id="offerProjName">—</div>
+          <div class="offer-proj-sub" id="offerProjSub"></div>
+        </div>
+        <div class="form-group"><label class="form-label">Full Name *</label><input class="form-input" id="ofName" type="text" placeholder="e.g. John Smith"></div>
+        <div class="form-group"><label class="form-label">Phone Number *</label><input class="form-input" id="ofPhone" type="tel" placeholder="604-xxx-xxxx" inputmode="tel"></div>
+        <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" id="ofEmail" type="email" placeholder="your@email.com" inputmode="email"></div>
+        <div class="form-group">
+          <label class="form-label">Your Offer Price *</label>
+          <input class="form-input" id="ofPrice" type="text" placeholder="e.g. $850,000 or asking price" style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;">
+        </div>
+        <div class="form-group"><label class="form-label">Subjects / Conditions</label>
+          <select class="form-input" id="ofSubjects">
+            <option>Subject to financing &amp; inspection</option>
+            <option>Subject to financing only</option>
+            <option>Subject to inspection only</option>
+            <option>No subjects (clean offer)</option>
+            <option>To be discussed</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Completion Preference</label>
+          <select class="form-input" id="ofCompletion">
+            <option>Flexible</option><option>ASAP</option><option>30 days</option>
+            <option>60 days</option><option>90 days</option><option>At project completion</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Notes (optional)</label><textarea class="form-input" id="ofNotes" placeholder="Pre-approved for $900K, first-time buyer…"></textarea></div>
+        <button class="btn btn-tan" style="width:100%;justify-content:center;" onclick="submitOffer()">Submit Offer Interest →</button>
+        <p style="font-size:11px;color:rgba(255,255,255,.25);text-align:center;margin-top:10px;">🔒 Sent privately to Parnam. No obligation.</p>
+      </div>
+      <div class="form-success" id="offerSuccess" style="display:none;">
+        <div class="success-icon">🤝</div>
+        <h3 class="success-title">Offer Submitted!</h3>
+        <p class="success-msg">Parnam will review your details and be in touch very shortly.</p>
+        <button class="btn btn-outline" style="margin-top:20px;" onclick="closeOv('offerModal')">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PIN GATE ── -->
+<div class="pin-overlay" id="pinOverlay">
+  <div class="pin-box">
+    <div class="pin-icon">🔐</div>
+    <h2 class="pin-title">Admin Access</h2>
+    <p class="pin-sub">Enter your PIN to manage listings</p>
+    <p class="pin-err" id="pinErr">Incorrect PIN. Try again.</p>
+    <input class="pin-input" id="pinInput" type="password" maxlength="6" placeholder="••••" onkeydown="if(event.key==='Enter')verifyPin()">
+    <button class="pin-btn" onclick="verifyPin()">Unlock →</button>
+    <p class="pin-hint"></p>
+  </div>
+</div>
+
+<!-- ── ADMIN PANEL ── -->
+<div class="admin-overlay" id="adminOverlay" onclick="if(event.target===this)closeAdmin()">
+  <div class="admin-panel">
+    <div class="ap-header">
+      <div class="ap-title">Listing Manager<span>Properties by Parnam · Admin</span></div>
+      <button class="ap-close" onclick="closeAdmin()">✕</button>
+    </div>
+    <div class="ap-tabs">
+      <button class="ap-tab on"  onclick="apTab('listings',this)">📋 All Listings</button>
+      <button class="ap-tab"     onclick="apTab('manual',this)">✏️ Add / Edit</button>
+      <button class="ap-tab"     onclick="apTab('pdf',this)">📄 PDF Import</button>
+      <button class="ap-tab"     onclick="apTab('url',this)">🔗 URL Import</button>
+    </div>
+    <div class="ap-body">
+
+      <!-- ALL LISTINGS -->
+      <div class="ap-sec on" id="ap-listings">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+          <p style="font-size:13px;color:rgba(255,255,255,.35);">Click Edit to update any listing.</p>
+          <button onclick="apTab('manual',document.querySelectorAll('.ap-tab')[1]);apClear()" style="padding:8px 16px;border-radius:8px;background:var(--gold);color:#fff;font-size:12px;font-weight:600;cursor:pointer;border:none;">+ New Listing</button>
+        </div>
+        <div id="apList"></div>
+      </div>
+
+      <!-- MANUAL FORM -->
+      <div class="ap-sec" id="ap-manual">
+        <input type="hidden" id="apEditId">
+        <div class="af-grid">
+          <div class="af-sec">📌 Identity</div>
+          <div class="af-grp af-full"><label class="af-lbl">Project Name *</label><input class="af-inp" id="af-name" placeholder="e.g. Park Avenue"></div>
+          <div class="af-grp af-full"><label class="af-lbl">Developer / Builder</label><input class="af-inp" id="af-dev" placeholder="e.g. Bosa Development · Rennie"></div>
+          <div class="af-sec">📍 Location</div>
+          <div class="af-grp"><label class="af-lbl">City / Neighbourhood *</label><input class="af-inp" id="af-city" placeholder="e.g. Willoughby, Langley"></div>
+          <div class="af-grp"><label class="af-lbl">Region</label>
+            <select class="af-inp" id="af-region">
+              <option>Langley</option><option>Surrey</option><option>Vancouver</option><option>Burnaby</option>
+              <option>Coquitlam</option><option>Richmond</option><option>New Westminster</option>
+              <option>North Shore</option><option>Abbotsford</option><option>Maple Ridge</option>
+              <option>Delta</option><option>Chilliwack</option><option>Squamish</option>
+              <option>Okanagan</option><option>Other</option>
+            </select>
+          </div>
+          <div class="af-sec">💰 Pricing</div>
+          <div class="af-grp"><label class="af-lbl">Starting Price</label><input class="af-inp" id="af-price" placeholder="From $889,900 + GST"></div>
+          <div class="af-grp"><label class="af-lbl">Was / Original Price</label><input class="af-inp" id="af-pwas" placeholder="From $1,050,000"></div>
+          <div class="af-grp"><label class="af-lbl">Savings / Promo</label><input class="af-inp" id="af-psave" placeholder="$150K OFF"></div>
+          <div class="af-grp"><label class="af-lbl">Deposit</label><input class="af-inp" id="af-dep" placeholder="5% on signing"></div>
+          <div class="af-sec">🏷️ Details</div>
+          <div class="af-grp"><label class="af-lbl">Property Type</label>
+            <select class="af-inp" id="af-type">
+              <option value="">— Select —</option>
+              <option>Condo</option><option>Townhome</option><option>Row Home</option>
+              <option>Detached</option><option>Duplex</option><option>Villa</option><option>Mixed</option>
+            </select>
+          </div>
+          <div class="af-grp"><label class="af-lbl">Bedrooms</label><input class="af-inp" id="af-beds" placeholder="1–3 Bed"></div>
+          <div class="af-grp"><label class="af-lbl">Status</label>
+            <select class="af-inp" id="af-status">
+              <option value="move-in">Move-In Ready</option>
+              <option value="presale">Pre-Sale</option>
+              <option value="hard-hat">Hard Hat Tours</option>
+              <option value="coming-soon">Coming Soon</option>
+              <option value="selling-fast">Selling Fast</option>
+            </select>
+          </div>
+          <div class="af-grp"><label class="af-lbl">Badge (optional)</label><input class="af-inp" id="af-badge" placeholder="Last 3 Homes"></div>
+          <div class="af-grp"><label class="af-lbl">Est. Completion</label><input class="af-inp" id="af-comp" placeholder="January 2027"></div>
+          <div class="af-grp"><label class="af-lbl">GST Rebate?</label>
+            <select class="af-inp" id="af-gst">
+              <option value="">No</option>
+              <option value="full">Yes – Full (under $1M)</option>
+              <option value="partial">Yes – Partial ($1M–$1.5M)</option>
+            </select>
+          </div>
+          <div class="af-sec">✨ Highlights</div>
+          <div class="af-grp af-full"><label class="af-lbl">Key Highlights (one per line)</label>
+            <textarea class="af-inp" id="af-highlights" style="min-height:110px;" placeholder="A/C + EV charger included&#10;Fisher &amp; Paykel appliances&#10;Rooftop patio 500+ sq ft"></textarea>
+          </div>
+          <div class="af-grp af-full"><label class="af-lbl">Full Description</label><textarea class="af-inp" id="af-desc" placeholder="Write a detailed description…"></textarea></div>
+          <div class="af-sec">📞 Contact</div>
+          <div class="af-grp"><label class="af-lbl">Contact Name</label><input class="af-inp" id="af-cname" placeholder="Sales Team"></div>
+          <div class="af-grp"><label class="af-lbl">Phone</label><input class="af-inp" id="af-phone" type="tel" placeholder="604-xxx-xxxx"></div>
+          <div class="af-grp"><label class="af-lbl">Email</label><input class="af-inp" id="af-email" type="email" placeholder="info@project.ca"></div>
+          <div class="af-grp"><label class="af-lbl">Website</label><input class="af-inp" id="af-web" type="url" placeholder="https://project.ca"></div>
+          <div class="af-grp af-full"><label class="af-lbl">Show Home Hours</label><input class="af-inp" id="af-hrs" placeholder="Sat &amp; Sun 12–5 PM"></div>
+          <div class="af-sec">🖼️ Images</div>
+          <div class="af-grp af-full"><label class="af-lbl">Image URL (paste direct link to photo)</label><input class="af-inp" id="af-img" type="url" placeholder="https://developer-site.com/project-photo.jpg"></div>
+          <div id="af-img-preview" style="display:none;margin-top:8px;border-radius:10px;overflow:hidden;max-height:180px;border:1px solid rgba(255,255,255,.1);"></div>
+          <div class="af-sec">⚙️ Display</div>
+          <div class="af-grp"><label class="af-lbl">Date Added</label><input class="af-inp" id="af-date" type="date"></div>
+          <div class="af-grp"><label class="af-lbl">Accent Colour</label>
+            <select class="af-inp" id="af-color">
+              <option value="gold">Gold</option><option value="green">Green</option>
+              <option value="blue">Blue</option><option value="terra">Terra</option>
+              <option value="charcoal">Charcoal</option><option value="navy">Navy</option>
+            </select>
+          </div>
+        </div>
+        <button class="af-save" onclick="apSave()">💾 Save Listing</button>
+        <p style="font-size:12px;color:rgba(255,255,255,.25);text-align:center;margin-top:8px;">Saved to browser — appears live immediately.</p>
+      </div>
+
+      <!-- PDF IMPORT -->
+      <div class="ap-sec" id="ap-pdf">
+        <div class="imp-box" onclick="document.getElementById('pdfFile').click()">
+          <div class="imp-icon">📄</div>
+          <div class="imp-title">Upload a PDF or Image</div>
+          <p class="imp-sub">Upload any developer brochure, price list, or presale package.<br>AI will scan it and extract all listing details automatically.</p>
+          <input type="file" id="pdfFile" style="display:none;" accept=".pdf,image/*" onchange="handlePdf(this)">
+        </div>
+        <div class="imp-status" id="pdfStatus"></div>
+        <button class="imp-prev-btn" id="pdfPreviewBtn" style="display:none;" onclick="apTab('manual',document.querySelectorAll('.ap-tab')[1])">Review &amp; Save Extracted Listing →</button>
+      </div>
+
+      <!-- URL IMPORT -->
+      <div class="ap-sec" id="ap-url">
+        <div class="imp-box" style="cursor:default;">
+          <div class="imp-icon">🔗</div>
+          <div class="imp-title">Import from URL</div>
+          <p class="imp-sub">Paste any developer website or listing page URL.<br>AI will visit the page and extract all listing details automatically.</p>
+        </div>
+        <div class="url-row">
+          <input class="url-fld" id="urlField" type="url" placeholder="https://developer-project.com/presale">
+          <button class="url-go" id="urlGoBtn" onclick="handleUrl()">Extract</button>
+        </div>
+        <div class="imp-status" id="urlStatus"></div>
+        <button class="imp-prev-btn" id="urlPreviewBtn" style="display:none;" onclick="apTab('manual',document.querySelectorAll('.ap-tab')[1])">Review &amp; Save Extracted Listing →</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
