@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://funny-frangollo-4330d4.netlify.app/sitemap.xml
+Sitemap: https://propertiesbyparnam.ca/sitemap.xml
