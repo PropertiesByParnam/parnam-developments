@@ -299,6 +299,9 @@ body{
   content-visibility:auto;contain-intrinsic-size:0 500px;
 }
 @media(max-width:700px){.about{grid-template-columns:1fr;gap:32px;padding:36px 28px;}}
+.about-photo-wrap{margin-bottom:24px;}
+.about-photo{width:180px;height:220px;object-fit:cover;object-position:center top;border-radius:14px;border:2px solid rgba(201,149,106,.35);box-shadow:0 12px 40px rgba(0,0,0,.3);}
+@media(max-width:700px){.about-photo{width:140px;height:175px;}}
 .about-label{font-size:13px;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;font-weight:500;}
 .about-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,38px);font-weight:600;color:#fff;line-height:1.2;margin-bottom:18px;}
 .about-text{font-size:15px;line-height:1.9;color:rgba(255,255,255,.65);margin-bottom:12px;}
@@ -683,8 +686,11 @@ select.af-inp option{background:#0f1550;color:#fff;}
   <!-- ABOUT -->
   <section class="about reveal" id="about">
     <div>
+      <div class="about-photo-wrap">
+        <img src="parnam-photo.jpg" alt="Parnam Singh — Surrey & Langley Pre-Sale Specialist" class="about-photo" loading="lazy">
+      </div>
       <p class="about-label">About Parnam</p>
-      <h2 class="about-title">Surrey &amp; Langley<br><em>Pre-Sale Specialist</em></h2>
+      <h2 class="about-title">Lower Mainland<br><em>Pre-Sale Specialist</em></h2>
       <p class="about-text">With deep roots in both Surrey and Langley, Parnam brings on-the-ground knowledge of the Fraser Valley and Metro Vancouver's most exciting pre-sale markets.</p>
       <p class="about-text">Specializing in new construction and pre-sale developments — helping buyers secure tomorrow's best properties with exclusive VIP pre-sale access across BC.</p>
     </div>
@@ -1592,17 +1598,19 @@ function renderImageList(){
   const wrap=document.getElementById('af-imgs-list');
   if(!wrap)return;
   if(!window._editImages.length){wrap.innerHTML='<p style="font-size:13px;color:rgba(255,255,255,.2);padding:8px 0;">No images added yet.</p>';return;}
-  wrap.innerHTML=window._editImages.map((url,i)=>`
-    <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:8px 10px;">
-      <img src="${url}" style="width:56px;height:56px;object-fit:cover;border-radius:8px;flex-shrink:0;" onerror="this.style.display='none'">
+  wrap.innerHTML=window._editImages.map((url,i)=>{
+    const isB64=url.startsWith('data:');
+    const label=isB64?'Uploaded photo':(url.length>50?url.slice(0,50)+'…':url);
+    return `<div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:8px 10px;">
+      <img src="${url}" style="width:64px;height:48px;object-fit:cover;border-radius:6px;flex-shrink:0;background:rgba(255,255,255,.05);" onerror="this.style.display='none'">
       <div style="flex:1;min-width:0;">
-        <div style="font-size:12px;color:rgba(255,255,255,.6);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${url}</div>
-        <div style="font-size:11px;color:var(--gold);margin-top:2px;">${i===0?'★ Main photo':'Photo '+(i+1)}</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.6);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${label}</div>
+        <div style="font-size:11px;color:var(--gold);margin-top:2px;">${i===0?'★ Main photo':'Photo '+(i+1)}${isB64?' · 📷 Uploaded':' · 🔗 URL'}</div>
       </div>
-      ${i>0?`<button onclick="moveImgUp(${i})" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,.4);font-size:16px;padding:4px;" title="Move up">↑</button>`:''}
-      <button onclick="removeImg(${i})" style="background:none;border:none;cursor:pointer;color:#ef4444;font-size:16px;padding:4px;" title="Delete">✕</button>
-    </div>
-  `).join('');
+      ${i>0?`<button onclick="moveImgUp(${i})" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,.4);font-size:18px;padding:6px;" title="Move up">↑</button>`:''}
+      <button onclick="removeImg(${i})" style="background:none;border:none;cursor:pointer;color:#ef4444;font-size:18px;padding:6px;" title="Delete">✕</button>
+    </div>`;
+  }).join('');
 }
 function addImageUrl(){
   const inp=document.getElementById('af-img-new');
@@ -1628,6 +1636,44 @@ function moveImgUp(i){
   renderImageList();
 }
 window.moveImgUp=moveImgUp;
+
+/* ── IMAGE FILE UPLOAD ── */
+function handleImageUpload(input){
+  const files=input.files;
+  if(!files.length)return;
+  let processed=0;
+  const total=files.length;
+  showToast(`Processing ${total} image${total>1?'s':''}…`);
+  Array.from(files).forEach(file=>{
+    if(!file.type.startsWith('image/')){processed++;return;}
+    const reader=new FileReader();
+    reader.onload=function(e){
+      // Resize to max 800px width for reasonable storage
+      const img=new Image();
+      img.onload=function(){
+        const maxW=800,maxH=600;
+        let w=img.width,h=img.height;
+        if(w>maxW){h=Math.round(h*(maxW/w));w=maxW;}
+        if(h>maxH){w=Math.round(w*(maxH/h));h=maxH;}
+        const canvas=document.createElement('canvas');
+        canvas.width=w;canvas.height=h;
+        const ctx=canvas.getContext('2d');
+        ctx.drawImage(img,0,0,w,h);
+        const dataUrl=canvas.toDataURL('image/jpeg',0.78);
+        window._editImages.push(dataUrl);
+        processed++;
+        if(processed>=total){
+          renderImageList();
+          showToast(`${total} image${total>1?'s':''} added! ✓`);
+        }
+      };
+      img.src=e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+  input.value='';
+}
+window.handleImageUpload=handleImageUpload;
 
 /* Escape key closes pin/admin */
 document.addEventListener('keydown',e=>{
@@ -1794,13 +1840,24 @@ init();
           <div class="af-grp af-full"><label class="af-lbl">Show Home Hours</label><input class="af-inp" id="af-hrs" placeholder="Sat &amp; Sun 12–5 PM"></div>
           <div class="af-sec">🖼️ Images</div>
           <div class="af-grp af-full">
-            <label class="af-lbl">Image URLs</label>
+            <label class="af-lbl">Listing Photos</label>
             <div id="af-imgs-list" style="display:flex;flex-direction:column;gap:8px;margin-bottom:10px;"></div>
-            <div style="display:flex;gap:8px;">
-              <input class="af-inp" id="af-img-new" type="url" placeholder="https://developer-site.com/photo.jpg" style="flex:1;">
-              <button onclick="addImageUrl()" style="padding:8px 16px;border-radius:8px;background:var(--gold);color:#fff;font-size:13px;font-weight:600;cursor:pointer;border:none;white-space:nowrap;">+ Add</button>
+            <div style="display:flex;gap:8px;margin-bottom:8px;">
+              <input class="af-inp" id="af-img-new" type="url" placeholder="Paste image URL here…" style="flex:1;">
+              <button onclick="addImageUrl()" style="padding:8px 16px;border-radius:8px;background:var(--gold);color:#fff;font-size:13px;font-weight:600;cursor:pointer;border:none;white-space:nowrap;">+ Add URL</button>
             </div>
-            <p style="font-size:12px;color:rgba(255,255,255,.2);margin-top:6px;">Add multiple images — first one is the main card photo</p>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+              <div style="flex:1;height:1px;background:rgba(255,255,255,.1);"></div>
+              <span style="font-size:12px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.15em;">or</span>
+              <div style="flex:1;height:1px;background:rgba(255,255,255,.1);"></div>
+            </div>
+            <div id="imgUploadBox" onclick="document.getElementById('af-img-file').click()" style="border:2px dashed rgba(201,149,106,.25);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:all .25s;">
+              <div style="font-size:28px;margin-bottom:6px;">📷</div>
+              <div style="font-size:14px;color:rgba(255,255,255,.6);font-weight:500;">Upload from device</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.25);margin-top:4px;">JPG, PNG, WebP · Multiple files supported</div>
+              <input type="file" id="af-img-file" style="display:none;" accept="image/*" multiple onchange="handleImageUpload(this)">
+            </div>
+            <p style="font-size:12px;color:rgba(255,255,255,.2);margin-top:6px;">First image is the main card photo · Drag to reorder</p>
           </div>
           <div class="af-sec">⚙️ Display</div>
           <div class="af-grp"><label class="af-lbl">Date Added</label><input class="af-inp" id="af-date" type="date"></div>
