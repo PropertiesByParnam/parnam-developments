@@ -7,6 +7,10 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Properties by Parnam | Surrey &amp; Langley Pre-Sale Specialist · BC</title>
+<meta name="description" content="Properties by Parnam — your trusted guide to BC's finest new developments. Pre-sale and new construction specialist in Surrey, Langley, and the Fraser Valley.">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -82,7 +86,7 @@ body{
 
 /* ── BUTTONS ── */
 .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 30px;border-radius:100px;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.08em;text-decoration:none;cursor:pointer;transition:all .3s ease;border:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;min-height:48px;}
-.btn-primary{background:var(--gold);color:#fff;box-shadow:var(--shadow-gold);}
+.btn-primary{background:var(--gold);color:#1a1a1a;box-shadow:var(--shadow-gold);font-weight:600;}
 .btn-primary:hover{background:var(--gold-lt);transform:translateY(-2px);box-shadow:0 14px 40px rgba(201,149,106,.4);}
 .btn-primary:active{transform:scale(.97);}
 .btn-outline{background:transparent;border:1.5px solid rgba(255,255,255,.22);color:rgba(255,255,255,.8);}
@@ -103,12 +107,12 @@ body{
 }
 .header-inner{max-width:1200px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between;}
 .header-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold);text-decoration:none;flex-shrink:0;}
-.header-logo span{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.3em;color:rgba(255,255,255,.35);display:block;text-transform:uppercase;margin-top:-2px;}
+.header-logo span{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.3em;color:rgba(255,255,255,.65);display:block;text-transform:uppercase;margin-top:-2px;}
 .header-nav{display:flex;align-items:center;gap:8px;}
 .nav-btn{padding:8px 16px;border-radius:100px;font-size:12px;font-weight:500;letter-spacing:.06em;cursor:pointer;transition:all .25s ease;border:none;min-height:40px;-webkit-tap-highlight-color:transparent;}
 .nav-ghost{background:transparent;color:rgba(255,255,255,.55);border:1px solid transparent;}
 .nav-ghost:hover{color:var(--gold);border-color:rgba(201,149,106,.3);}
-.nav-solid{background:var(--gold);color:#fff;}
+.nav-solid{background:var(--gold);color:#1a1a1a;font-weight:600;}
 .nav-solid:hover{background:var(--gold-lt);}
 .nav-btn:active{transform:scale(.95);}
 
@@ -117,7 +121,7 @@ body{
 .stat-item{flex:1;padding:16px 12px;text-align:center;border-right:1px solid rgba(255,255,255,.2);}
 .stat-item:last-child{border-right:none;}
 .stat-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#fff;line-height:1;}
-.stat-label{font-size:12px;letter-spacing:.22em;color:rgba(255,255,255,.7);text-transform:uppercase;margin-top:4px;}
+.stat-label{font-size:12px;letter-spacing:.22em;color:rgba(255,255,255,.9);text-transform:uppercase;margin-top:4px;}
 
 /* ── TYPE PILLS SECTION ── */
 .type-section{background:var(--navy);border-bottom:2px solid rgba(196,149,106,.2);padding:32px 24px;}
@@ -296,7 +300,7 @@ body{
 .about-text{font-size:15px;line-height:1.9;color:rgba(255,255,255,.65);margin-bottom:12px;}
 .about-stats{display:flex;gap:28px;margin-top:24px;}
 .astat-num{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:var(--gold);}
-.astat-label{font-size:13px;color:rgba(255,255,255,.35);margin-top:2px;}
+.astat-label{font-size:13px;color:rgba(255,255,255,.6);margin-top:2px;}
 .about-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.8vw,24px);font-style:italic;font-weight:300;color:rgba(255,255,255,.6);line-height:1.65;border-left:2px solid var(--gold);padding-left:22px;margin-bottom:28px;}
 .about-contact{display:flex;flex-direction:column;gap:10px;}
 .contact-row{display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,.65);}
@@ -374,11 +378,11 @@ select.form-input option{background:#111852;color:#fff;}
 /* ── FOOTER ── */
 .footer{border-top:1px solid rgba(255,255,255,.06);padding:36px 20px env(safe-area-inset-bottom,20px);text-align:center;}
 .footer-logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--gold);margin-bottom:6px;}
-.footer-sub{font-size:11px;letter-spacing:.3em;color:rgba(255,255,255,.22);text-transform:uppercase;margin-bottom:18px;}
+.footer-sub{font-size:11px;letter-spacing:.3em;color:rgba(255,255,255,.5);text-transform:uppercase;margin-bottom:18px;}
 .footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:20px;}
-.footer-links a{font-size:12px;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
+.footer-links a{font-size:12px;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s;}
 .footer-links a:hover{color:var(--gold);}
-.footer-copy{font-size:12px;color:rgba(255,255,255,.18);}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.45);}
 
 /* ── TOAST ── */
 #toast{
