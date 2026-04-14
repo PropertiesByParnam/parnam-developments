@@ -1075,7 +1075,7 @@ function buildCard(p){
   const pillCls=PCLS[p.status]||'p-presale';
   const pillLbl=PLBL[p.status]||p.status;
   const imgHtml=(p.images&&p.images.length)
-    ?`<img src="${p.images[0]}" alt="${p.name}" loading="lazy">`
+    ?`<img src="${p.images[0]}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'><span class=\\'card-img-ph-icon\\'>🏗️</span><span class=\\'card-img-ph-text\\'>${p.city}</span></div>'">`
     :`<div class="card-img-placeholder"><span class="card-img-ph-icon">🏗️</span><span class="card-img-ph-text">${p.city}</span></div>`;
   const ribbon=p.badge?`<span class="card-ribbon">${p.badge}</span>`:(isNew?`<span class="card-ribbon">New</span>`:'');
   const specs=[];
