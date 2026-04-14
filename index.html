@@ -956,6 +956,8 @@ let saved=[];
 try{saved=JSON.parse(localStorage.getItem('parnam_saved')||'[]');}catch(e){}
 
 /* ── INIT ── */
+function saveListingsToFirebase(){const obj={};customListings.forEach(l=>{if(l&&l.id)obj[l.id]=l;});fbSet("listings",obj);};
+function saveSavedToFirebase(){fbSet("saved",saved);};
 function init(){
   buildTypePills();
   buildRegionChips();
@@ -964,6 +966,7 @@ function init(){
   applyFilters();
   initReveal();
   initSwipeToClose();
+  loadFromFirebase();
 }
 
 /* ── BUILD TYPE PILLS ── */
@@ -1262,7 +1265,7 @@ function toggleSave(id){
   const idx=saved.indexOf(id);
   if(idx===-1){saved.push(id);showToast('Property saved! ❤');}
   else{saved.splice(idx,1);showToast('Removed from saved.');}
-  try{localStorage.setItem('parnam_saved',JSON.stringify(saved));}catch(e){}
+  saveSavedToFirebase();
   const btn=document.getElementById('save-'+id);
   if(btn)btn.textContent=saved.includes(id)?'❤':'🤍';
   // re-render saved panel if open
@@ -1548,13 +1551,7 @@ function apSave(){
   };
   const idx=customListings.findIndex(c=>c.id===editId);
   if(idx>=0)customListings[idx]=listing; else customListings.unshift(listing);
-  try{
-    localStorage.setItem('parnam_custom',JSON.stringify(customListings));
-  }catch(e){
-    showToast('⚠️ Storage full! Too many images. Try using image URLs instead of uploads.');
-    console.error('localStorage save failed:',e);
-    return;
-  }
+  saveListingsToFirebase();
   applyFilters();
   buildRegionChips();
   updateStats();
@@ -1569,7 +1566,7 @@ window.apSave=apSave;
 function apDel(id){
   if(!confirm('Remove this listing?'))return;
   customListings=customListings.filter(c=>c.id!==id);
-  try{localStorage.setItem('parnam_custom',JSON.stringify(customListings));}catch(e){}
+  saveListingsToFirebase();
   renderAdminList();applyFilters();buildRegionChips();updateStats();
   showToast('Listing removed.');
 }
@@ -1767,6 +1764,12 @@ window.moveImgUp=moveImgUp;
 
 /* ── IMAGE FILE UPLOAD ── */
 const IMGBB_KEY='9395bfea32d0af33daa391b65150d3d9';
+const FB_URL='https://parnam-developments-default-rtdb.firebaseio.com';
+
+async function fbGet(path){try{const r=await fetch(FB_URL+'/'+path+'.json');const d=await r.json();return d;}catch(e){return null;}}
+async function fbSet(path,data){try{await fetch(FB_URL+'/'+path+'.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});return true;}catch(e){return false;}}
+async function fbPatch(path,data){try{await fetch(FB_URL+'/'+path+'.json',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});return true;}catch(e){return false;}}
+async function loadFromFirebase(){const data=await fbGet('listings');if(data&&typeof data==='object'){customListings=Object.values(data).filter(Boolean);applyFilters();buildRegionChips();updateStats();buildTypePills();}const sv=await fbGet('saved');if(sv&&Array.isArray(sv)){saved=sv;}}
 
 async function handleImageUpload(input){
   const files=Array.from(input.files).filter(f=>f.type.startsWith('image/'));
@@ -1923,7 +1926,7 @@ async function pmUpload(input,id){
   if(!isCustom){
     // Copy seed listing into custom so we can save images
     customListings.unshift({...p, images:[...(p.images||[])]});
-    try{localStorage.setItem('parnam_custom',JSON.stringify(customListings));}catch(e){}
+    saveListingsToFirebase();
   }
 
   const target=customListings.find(c=>c.id===id);
@@ -1948,7 +1951,7 @@ async function pmUpload(input,id){
     }catch(e){errors.push(file.name);}
   }
 
-  try{localStorage.setItem('parnam_custom',JSON.stringify(customListings));}catch(e){}
+  saveListingsToFirebase();
   applyFilters();
 
   prog.style.display='none';
@@ -1965,7 +1968,7 @@ function pmRemovePhoto(id,idx){
   const target=customListings.find(c=>c.id===id);
   if(!target||!target.images)return;
   target.images.splice(idx,1);
-  try{localStorage.setItem('parnam_custom',JSON.stringify(customListings));}catch(e){}
+  saveListingsToFirebase();
   applyFilters();
   renderPhotoManager();
   showToast('Photo removed.');
@@ -1976,7 +1979,7 @@ function pmClearPhotos(id){
   if(!confirm('Remove all photos for this listing?'))return;
   const target=customListings.find(c=>c.id===id);
   if(target){target.images=[];}
-  try{localStorage.setItem('parnam_custom',JSON.stringify(customListings));}catch(e){}
+  saveListingsToFirebase();
   applyFilters();
   renderPhotoManager();
   showToast('All photos cleared.');
