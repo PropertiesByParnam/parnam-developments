@@ -939,14 +939,14 @@ const DATA = [
    highlights:['26-unit presale townhome community by Leone Homes','3 and 4 bedroom floor plans with modern finishes','Launching April 2026 — secure with just 1% deposit','Double garage · Private outdoor spaces'],
    desc:'26-unit presale townhome community by Leone Homes in Langley. Features 3 and 4 bedroom floor plans. Secure with just 1% deposit.',
    cname:'Leone Homes Sales',hrs:'By appointment',date:'2026-04-11',color:'gold',images:[
-     'images/bromley/Bromley%20Exterior.png',
-     'images/bromley/Living%20%26%20Kitchen%20Light.jpg',
-     'images/bromley/Kitchen%20Light.jpg',
-     'images/bromley/Kitchen%20Dark.jpg',
-     'images/bromley/Living%20Light.jpg',
-     'images/bromley/Living%20Dark.jpg',
-     'images/bromley/Ensuite%20Light.jpg',
-     'images/bromley/Master%20Bedroom%20Light.jpg'
+     'https://raw.githubusercontent.com/PropertiesByParnam/parnam-developments/main/images/bromley/Bromley%20Exterior.png',
+     'https://raw.githubusercontent.com/PropertiesByParnam/parnam-developments/main/images/bromley/Living%20%26%20Kitchen%20Light.jpg',
+     'https://raw.githubusercontent.com/PropertiesByParnam/parnam-developments/main/images/bromley/Kitchen%20Light.jpg',
+     'https://raw.githubusercontent.com/PropertiesByParnam/parnam-developments/main/images/bromley/Kitchen%20Dark.jpg',
+     'https://raw.githubusercontent.com/PropertiesByParnam/parnam-developments/main/images/bromley/Living%20Light.jpg',
+     'https://raw.githubusercontent.com/PropertiesByParnam/parnam-developments/main/images/bromley/Living%20Dark.jpg',
+     'https://raw.githubusercontent.com/PropertiesByParnam/parnam-developments/main/images/bromley/Ensuite%20Light.jpg',
+     'https://raw.githubusercontent.com/PropertiesByParnam/parnam-developments/main/images/bromley/Master%20Bedroom%20Light.jpg'
    ]}
 ];
 
@@ -1766,43 +1766,222 @@ function moveImgUp(i){
 window.moveImgUp=moveImgUp;
 
 /* ── IMAGE FILE UPLOAD ── */
-function handleImageUpload(input){
-  const files=input.files;
+const IMGBB_KEY='9395bfea32d0af33daa391b65150d3d9';
+
+async function handleImageUpload(input){
+  const files=Array.from(input.files).filter(f=>f.type.startsWith('image/'));
   if(!files.length)return;
-  let processed=0;
+  input.value='';
+
+  // Show upload progress UI
+  const box=document.getElementById('imgUploadBox');
+  const origHTML=box.innerHTML;
+  box.style.pointerEvents='none';
+
+  let uploaded=0;
   const total=files.length;
-  showToast(`Processing ${total} image${total>1?'s':''}…`);
-  Array.from(files).forEach(file=>{
-    if(!file.type.startsWith('image/')){processed++;return;}
+
+  function updateProgress(){
+    box.innerHTML=`
+      <div style="font-size:28px;margin-bottom:8px;">☁️</div>
+      <div style="font-size:14px;color:rgba(255,255,255,.8);font-weight:600;">Uploading ${uploaded} of ${total}…</div>
+      <div style="margin:12px auto 0;width:80%;height:4px;background:rgba(255,255,255,.1);border-radius:100px;overflow:hidden;">
+        <div style="height:100%;background:var(--gold);border-radius:100px;transition:width .3s ease;width:${Math.round((uploaded/total)*100)}%;"></div>
+      </div>
+      <div style="font-size:12px;color:rgba(255,255,255,.3);margin-top:8px;">Please wait…</div>`;
+  }
+  updateProgress();
+
+  const errors=[];
+
+  for(const file of files){
+    try{
+      // Compress before upload
+      const compressed=await compressImage(file,1200,900,0.82);
+      const b64=compressed.split(',')[1];
+
+      const form=new FormData();
+      form.append('key',IMGBB_KEY);
+      form.append('image',b64);
+      form.append('name',file.name.replace(/\.[^.]+$/,''));
+
+      const resp=await fetch('https://api.imgbb.com/1/upload',{method:'POST',body:form});
+      const data=await resp.json();
+
+      if(data.success){
+        window._editImages.push(data.data.display_url);
+        uploaded++;
+        updateProgress();
+        renderImageList();
+      } else {
+        errors.push(file.name);
+      }
+    } catch(e){
+      errors.push(file.name);
+    }
+  }
+
+  // Restore upload box
+  box.style.pointerEvents='';
+  box.innerHTML=origHTML;
+  // Re-attach file input handler
+  const newInput=box.querySelector('input[type="file"]');
+  if(newInput) newInput.addEventListener('change',function(){handleImageUpload(this);});
+
+  if(errors.length){
+    showToast(`⚠️ ${uploaded} uploaded, ${errors.length} failed. Try again.`);
+  } else {
+    showToast(`✅ ${total} photo${total>1?'s':''} uploaded permanently! ✓`);
+  }
+}
+window.handleImageUpload=handleImageUpload;
+
+function compressImage(file,maxW,maxH,quality){
+  return new Promise((res,rej)=>{
     const reader=new FileReader();
     reader.onload=function(e){
       const img=new Image();
       img.onload=function(){
-        const maxW=480,maxH=360;
         let w=img.width,h=img.height;
         if(w>maxW){h=Math.round(h*(maxW/w));w=maxW;}
         if(h>maxH){w=Math.round(w*(maxH/h));h=maxH;}
         const canvas=document.createElement('canvas');
         canvas.width=w;canvas.height=h;
-        const ctx=canvas.getContext('2d');
-        ctx.drawImage(img,0,0,w,h);
-        const dataUrl=canvas.toDataURL('image/jpeg',0.55);
-        window._editImages.push(dataUrl);
-        processed++;
-        if(processed>=total){
-          renderImageList();
-          showToast(`${total} image${total>1?'s':''} added! ✓`);
-        }
+        canvas.getContext('2d').drawImage(img,0,0,w,h);
+        res(canvas.toDataURL('image/jpeg',quality));
       };
+      img.onerror=rej;
       img.src=e.target.result;
     };
+    reader.onerror=rej;
     reader.readAsDataURL(file);
   });
-  input.value='';
 }
-window.handleImageUpload=handleImageUpload;
 
-/* Escape key closes pin/admin */
+/* ── BULK PHOTO MANAGER ── */
+function renderPhotoManager(){
+  const all=getAllListings();
+  const wrap=document.getElementById('pmListings');
+  if(!wrap)return;
+  wrap.innerHTML=all.map(p=>{
+    const imgCount=(p.images&&p.images.length)||0;
+    const thumbs=imgCount>0
+      ?p.images.slice(0,4).map(src=>`<img src="${src}" style="width:52px;height:40px;object-fit:cover;border-radius:6px;border:1px solid rgba(255,255,255,.1);" onerror="this.style.display='none'">`).join('')
+      :`<div style="width:52px;height:40px;border-radius:6px;background:rgba(255,255,255,.05);border:1px dashed rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:18px;color:rgba(255,255,255,.2);">📷</div>`;
+    return `<div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px 16px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:0;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:#fff;margin-bottom:2px;">${p.name}</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.35);">📍 ${p.city} · <span style="color:${imgCount>0?'#a7f3d0':'rgba(255,255,255,.25)'};">${imgCount>0?imgCount+' photo'+(imgCount!==1?'s':''):'No photos yet'}</span></div>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+          ${thumbs}
+          <label style="cursor:pointer;padding:8px 14px;border-radius:8px;background:var(--gold);color:#fff;font-size:12px;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:6px;">
+            ☁️ Upload
+            <input type="file" accept="image/*" multiple style="display:none;" onchange="pmUpload(this,'${p.id}')">
+          </label>
+          ${imgCount>0?`<button onclick="pmClearPhotos('${p.id}')" style="padding:8px 10px;border-radius:8px;background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.2);font-size:12px;cursor:pointer;">✕ Clear</button>`:''}
+        </div>
+      </div>
+      <div id="pm-progress-${p.id}" style="display:none;margin-top:10px;"></div>
+      <div id="pm-thumbs-${p.id}" style="display:${imgCount>0?'flex':'none'};flex-wrap:wrap;gap:6px;margin-top:10px;">
+        ${imgCount>0?p.images.map((src,i)=>`<div style="position:relative;"><img src="${src}" style="width:70px;height:56px;object-fit:cover;border-radius:7px;border:1px solid rgba(255,255,255,.1);" onerror="this.parentElement.remove()"><button onclick="pmRemovePhoto('${p.id}',${i})" style="position:absolute;top:-5px;right:-5px;width:18px;height:18px;border-radius:50%;background:#ef4444;border:none;color:#fff;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">✕</button></div>`).join(''):''}
+      </div>
+    </div>`;
+  }).join('');
+}
+window.renderPhotoManager=renderPhotoManager;
+
+async function pmUpload(input,id){
+  const files=Array.from(input.files).filter(f=>f.type.startsWith('image/'));
+  if(!files.length)return;
+  input.value='';
+
+  const prog=document.getElementById('pm-progress-'+id);
+  prog.style.display='block';
+
+  let done=0;
+  const total=files.length;
+
+  function updateProg(){
+    prog.innerHTML=`<div style="display:flex;align-items:center;gap:10px;">
+      <div style="flex:1;height:5px;background:rgba(255,255,255,.08);border-radius:100px;overflow:hidden;">
+        <div style="height:100%;width:${Math.round((done/total)*100)}%;background:var(--gold);border-radius:100px;transition:width .3s;"></div>
+      </div>
+      <span style="font-size:12px;color:rgba(255,255,255,.4);white-space:nowrap;">${done}/${total} uploading…</span>
+    </div>`;
+  }
+  updateProg();
+
+  // Get current listing
+  const all=getAllListings();
+  const p=all.find(x=>x.id===id);
+  if(!p)return;
+
+  // Make sure it exists in customListings so we can save to it
+  const isCustom=!!customListings.find(c=>c.id===id);
+  if(!isCustom){
+    // Copy seed listing into custom so we can save images
+    customListings.unshift({...p, images:[...(p.images||[])]});
+    try{localStorage.setItem('parnam_custom',JSON.stringify(customListings));}catch(e){}
+  }
+
+  const target=customListings.find(c=>c.id===id);
+  if(!target.images)target.images=[];
+
+  const errors=[];
+  for(const file of files){
+    try{
+      const compressed=await compressImage(file,1200,900,0.82);
+      const b64=compressed.split(',')[1];
+      const form=new FormData();
+      form.append('key',IMGBB_KEY);
+      form.append('image',b64);
+      form.append('name',p.name+'-'+file.name.replace(/\.[^.]+$/,''));
+      const resp=await fetch('https://api.imgbb.com/1/upload',{method:'POST',body:form});
+      const data=await resp.json();
+      if(data.success){
+        target.images.push(data.data.display_url);
+        done++;
+        updateProg();
+      } else {errors.push(file.name);}
+    }catch(e){errors.push(file.name);}
+  }
+
+  try{localStorage.setItem('parnam_custom',JSON.stringify(customListings));}catch(e){}
+  applyFilters();
+
+  prog.style.display='none';
+  if(errors.length){
+    showToast(`⚠️ ${done} uploaded, ${errors.length} failed.`);
+  } else {
+    showToast(`✅ ${done} photo${done!==1?'s':''} added to ${p.name}!`);
+  }
+  renderPhotoManager();
+}
+window.pmUpload=pmUpload;
+
+function pmRemovePhoto(id,idx){
+  const target=customListings.find(c=>c.id===id);
+  if(!target||!target.images)return;
+  target.images.splice(idx,1);
+  try{localStorage.setItem('parnam_custom',JSON.stringify(customListings));}catch(e){}
+  applyFilters();
+  renderPhotoManager();
+  showToast('Photo removed.');
+}
+window.pmRemovePhoto=pmRemovePhoto;
+
+function pmClearPhotos(id){
+  if(!confirm('Remove all photos for this listing?'))return;
+  const target=customListings.find(c=>c.id===id);
+  if(target){target.images=[];}
+  try{localStorage.setItem('parnam_custom',JSON.stringify(customListings));}catch(e){}
+  applyFilters();
+  renderPhotoManager();
+  showToast('All photos cleared.');
+}
+window.pmClearPhotos=pmClearPhotos;
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){
     document.getElementById('pinOverlay').classList.remove('open');
@@ -1890,6 +2069,7 @@ init();
     <div class="ap-tabs">
       <button class="ap-tab on"  onclick="apTab('listings',this)">📋 All Listings</button>
       <button class="ap-tab"     onclick="apTab('manual',this)">✏️ Add / Edit</button>
+      <button class="ap-tab"     onclick="apTab('photos',this);renderPhotoManager()">📸 Photos</button>
       <button class="ap-tab"     onclick="apTab('pdf',this)">📄 PDF Import</button>
       <button class="ap-tab"     onclick="apTab('url',this)">🔗 URL Import</button>
     </div>
@@ -1981,10 +2161,10 @@ init();
             <div id="imgUploadBox" onclick="document.getElementById('af-img-file').click()" style="border:2px dashed rgba(201,149,106,.25);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:all .25s;">
               <div style="font-size:28px;margin-bottom:6px;">📷</div>
               <div style="font-size:14px;color:rgba(255,255,255,.6);font-weight:500;">Upload from device</div>
-              <div style="font-size:12px;color:rgba(255,255,255,.25);margin-top:4px;">JPG, PNG, WebP · Multiple files supported</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.25);margin-top:4px;">Photos upload instantly to cloud ☁️ · JPG, PNG, WebP · Multiple OK</div>
               <input type="file" id="af-img-file" style="display:none;" accept="image/*" multiple onchange="handleImageUpload(this)">
             </div>
-            <p style="font-size:12px;color:rgba(255,255,255,.2);margin-top:6px;">First image is the main card photo · Drag to reorder</p>
+            <p style="font-size:12px;color:rgba(255,255,255,.2);margin-top:6px;">Photos are permanently hosted — visible on all devices instantly ✓</p>
           </div>
           <div class="af-sec">⚙️ Display</div>
           <div class="af-grp"><label class="af-lbl">Date Added</label><input class="af-inp" id="af-date" type="date"></div>
@@ -2025,6 +2205,14 @@ init();
         </div>
         <div class="imp-status" id="urlStatus"></div>
         <button class="imp-prev-btn" id="urlPreviewBtn" style="display:none;" onclick="apTab('manual',document.querySelectorAll('.ap-tab')[1])">Review &amp; Save Extracted Listing →</button>
+      </div>
+
+      <!-- BULK PHOTOS -->
+      <div class="ap-sec" id="ap-photos">
+        <div style="margin-bottom:18px;">
+          <p style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:14px;">Select a listing, upload all its photos at once. Repeat for each project.</p>
+          <div id="pmListings" style="display:flex;flex-direction:column;gap:10px;"></div>
+        </div>
       </div>
 
     </div>
